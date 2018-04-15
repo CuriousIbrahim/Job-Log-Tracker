@@ -25,6 +25,12 @@ public class Database extends CoreDatabase {
 
     public Database() throws SQLException {
         super(DB_NAME);
+        createTables();
+    }
+
+    private void createTables() {
+        for (String sql : TABLES_SQL)
+            runSql(sql);
     }
 
 }
