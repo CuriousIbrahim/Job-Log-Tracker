@@ -17,6 +17,14 @@ public class JobDatabase extends Database implements BaseDAO {
     private static final String GET_COVER_LETTER = "SELECT * FROM cover_letter WHERE job_id=";
     private static final String ALL_OTHER_FILES = "SELECT * FROM other_file WHERE job_id=";
 
+    private static final String[] DELETE_ALL = {
+            "DELETE * FROM job",
+            "DELETE * FROM job_status",
+            "DELETE * FROM resume",
+            "DELETE * FROM cover_letter",
+            "DELETE * FROM other_file"
+    };
+
 
 
     public JobDatabase () throws SQLException {
@@ -89,6 +97,9 @@ public class JobDatabase extends Database implements BaseDAO {
 
     @Override
     public void clear() throws SQLException {
+
+        for (String sql : DELETE_ALL)
+            runSql(sql);
 
     }
 
