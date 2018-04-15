@@ -18,7 +18,7 @@ public class Database extends CoreDatabase {
                     "FOREIGN KEY (job_id) REFERENCES job(id));",
             "CREATE TABLE IF NOT EXISTS cover_letter (job_id INTEGER, cover_letter BLOB, extension TEXT, " +
                     "FOREIGN KEY (job_id) REFERENCES job(id));",
-            "CREATE TABLE IF NOT EXISTS other_file (job_id INTEGER, name TEXT, file BLOB, extension TEXT, " +
+            "CREATE TABLE IF NOT EXISTS other_file (id INTEGER PRIMARY KEY, job_id INTEGER, name TEXT, file BLOB, extension TEXT, " +
                     "FOREIGN KEY (job_id) REFERENCES job(id));"
     };
 
