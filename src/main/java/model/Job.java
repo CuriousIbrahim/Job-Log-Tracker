@@ -11,4 +11,6 @@ public class Job {
     private String location;
 
 
+
+
 }
