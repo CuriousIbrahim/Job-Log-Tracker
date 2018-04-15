@@ -17,6 +17,8 @@ public class Job {
     private Resume resume;
     private CoverLetter coverLetter;
 
+    private List<OtherFile> otherFiles;
+
 
 
 
