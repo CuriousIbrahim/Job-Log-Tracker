@@ -14,6 +14,8 @@ public class Job {
 
     private List<JobStatus> jobStatuses;
 
+    private Resume resume;
+
 
 
 
