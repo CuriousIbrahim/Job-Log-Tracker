@@ -6,4 +6,9 @@ public class JobStatus {
     private int timestamp;
     private String status;
 
+    public JobStatus(int jobId, int timestamp, String status) {
+        this.jobId = jobId;
+        this.timestamp = timestamp;
+        this.status = status;
+    }
 }
