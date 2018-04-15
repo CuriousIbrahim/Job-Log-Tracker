@@ -4,6 +4,7 @@ import db.core.Database;
 import db.dao.base.BaseDAO;
 import model.*;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -39,9 +40,7 @@ public class JobDatabase extends Database implements BaseDAO {
 
 
 
-    public JobDatabase () throws SQLException {
-
-    }
+    public JobDatabase () throws SQLException {}
 
     @Override
     public List<Job> all() throws SQLException {
@@ -117,6 +116,66 @@ public class JobDatabase extends Database implements BaseDAO {
 
     @Override
     public void insert(Object o) throws SQLException {
+
+        Job job;
+
+        // Check and cast o into Job
+        if (o instanceof Job) {
+            job = (Job) o;
+        } else {
+            return;
+        }
+
+        // Insert into job and get id
+        PreparedStatement stmt = conn.prepareStatement(INSERT_JOB);
+
+        stmt.setString(1,job.getTitle());
+        stmt.setString(2, job.getType());
+        stmt.setString(3, job.getCompany());
+        stmt.setString(4, job.getDescription());
+        stmt.setInt(5, job.getTimestampApplied());
+        stmt.setString(6, job.getLocation());
+
+        stmt.executeUpdate();
+
+        // Get generated id
+        int id = stmt.getGeneratedKeys().getInt(1);                 // Job id
+
+        // Set job id for Job and for other attributes in Job that require it
+        job.setId(id);
+
+        // Insert resume
+        stmt = conn.prepareStatement(INSERT_RESUME);
+        stmt.setInt(1, job.getId());
+        stmt.setBytes(2, job.getResume().getResume());
+        stmt.setString(3, job.getResume().getExtension());
+        stmt.executeUpdate();
+
+        // Insert cover letter
+        stmt = conn.prepareStatement(INSERT_COVER_LETTER);
+        stmt.setInt(1, job.getId());
+        stmt.setBytes(2, job.getCoverLetter().getCoverLetter());
+        stmt.setString(3, job.getCoverLetter().getExtension());
+        stmt.executeUpdate();
+
+        // Insert job statuses
+        for (JobStatus status : job.getJobStatuses()) {
+            stmt = conn.prepareStatement(INSERT_STATUS);
+            stmt.setInt(1, job.getId());
+            stmt.setInt(2, status.getTimestamp());
+            stmt.setString(3, status.getStatus());
+            stmt.executeUpdate();
+        }
+
+        // Insert other files
+        for (OtherFile file : job.getOtherFiles()) {
+            stmt = conn.prepareStatement(INSERT_OTHER_FILE);
+            stmt.setInt(1, job.getId());
+            stmt.setString(2, file.getName());
+            stmt.setBytes(3, file.getFile());
+            stmt.setString(4, file.getExtension());
+            stmt.executeUpdate();
+        }
 
     }
 
