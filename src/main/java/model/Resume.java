@@ -11,4 +11,28 @@ public class Resume {
         this.resume = resume;
         this.extension = extension;
     }
+
+    public int getJobId() {
+        return jobId;
+    }
+
+    public void setJobId(int jobId) {
+        this.jobId = jobId;
+    }
+
+    public byte[] getResume() {
+        return resume;
+    }
+
+    public void setResume(byte[] resume) {
+        this.resume = resume;
+    }
+
+    public String getExtension() {
+        return extension;
+    }
+
+    public void setExtension(String extension) {
+        this.extension = extension;
+    }
 }
