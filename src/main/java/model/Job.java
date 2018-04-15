@@ -34,4 +34,92 @@ public class Job {
         this.coverLetter = coverLetter;
         this.otherFiles = otherFiles;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getTimestampApplied() {
+        return timestampApplied;
+    }
+
+    public void setTimestampApplied(int timestampApplied) {
+        this.timestampApplied = timestampApplied;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public List<JobStatus> getJobStatuses() {
+        return jobStatuses;
+    }
+
+    public void setJobStatuses(List<JobStatus> jobStatuses) {
+        this.jobStatuses = jobStatuses;
+    }
+
+    public Resume getResume() {
+        return resume;
+    }
+
+    public void setResume(Resume resume) {
+        this.resume = resume;
+    }
+
+    public CoverLetter getCoverLetter() {
+        return coverLetter;
+    }
+
+    public void setCoverLetter(CoverLetter coverLetter) {
+        this.coverLetter = coverLetter;
+    }
+
+    public List<OtherFile> getOtherFiles() {
+        return otherFiles;
+    }
+
+    public void setOtherFiles(List<OtherFile> otherFiles) {
+        this.otherFiles = otherFiles;
+    }
 }
