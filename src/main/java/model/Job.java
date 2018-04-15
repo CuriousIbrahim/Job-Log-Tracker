@@ -15,6 +15,7 @@ public class Job {
     private List<JobStatus> jobStatuses;
 
     private Resume resume;
+    private CoverLetter coverLetter;
 
 
 
