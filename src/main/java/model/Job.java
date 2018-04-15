@@ -41,6 +41,14 @@ public class Job {
 
     public void setId(int id) {
         this.id = id;
+        this.resume.setJobId(id);
+        this.coverLetter.setJobId(id);
+
+        for (JobStatus jobStatus : jobStatuses)
+            jobStatus.setJobId(id);
+
+        for (OtherFile otherFile : otherFiles)
+            otherFile.setJobId(id);
     }
 
     public String getTitle() {
