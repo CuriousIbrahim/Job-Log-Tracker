@@ -11,12 +11,14 @@ import java.util.List;
 
 public class JobDatabase extends Database implements BaseDAO {
 
+    // Selecting
     private static final String ALL_JOB = "SELECT * FROM job";
     private static final String ALL_JOB_STATUS = "SELECT * FROM job_status WHERE job_id=";
     private static final String GET_RESUME = "SELECT * FROM resume WHERE job_id=";
     private static final String GET_COVER_LETTER = "SELECT * FROM cover_letter WHERE job_id=";
     private static final String ALL_OTHER_FILES = "SELECT * FROM other_file WHERE job_id=";
 
+    // Delete
     private static final String[] DELETE_ALL = {
             "DELETE * FROM job",
             "DELETE * FROM job_status",
