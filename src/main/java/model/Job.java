@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public class Job {
 
     private int id;
@@ -9,6 +11,8 @@ public class Job {
     private String description;
     private int timestampApplied;
     private String location;
+
+    private List<JobStatus> jobStatuses;
 
 
 
