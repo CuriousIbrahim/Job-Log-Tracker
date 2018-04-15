@@ -18,7 +18,7 @@ public class JobDatabase extends Database implements BaseDAO {
     private static final String GET_COVER_LETTER = "SELECT * FROM cover_letter WHERE job_id=";
     private static final String ALL_OTHER_FILES = "SELECT * FROM other_file WHERE job_id=";
 
-    // Delete
+    // Delete All
     private static final String[] DELETE_ALL = {
             "DELETE * FROM job",
             "DELETE * FROM job_status",
@@ -26,6 +26,16 @@ public class JobDatabase extends Database implements BaseDAO {
             "DELETE * FROM cover_letter",
             "DELETE * FROM other_file"
     };
+
+    // Insert
+    private static final String INSERT_JOB = "INSERT INTO job (title, type, company, description, timestamp_applied, " +
+            "location) VALUES (? ,?, ?, ?, ?, ?)";
+    private static final String INSERT_STATUS = "INSERT INTO job_status (job_id, timestamp, status) VALUES (?, ?, ?)";
+    private static final String INSERT_RESUME = "INSERT INTO resume (job_id, resume, extension) VALUES (?, ?, ?)";
+    private static final String INSERT_COVER_LETTER = "INSERT INTO cover_letter (job_id, cover_letter, extension) " +
+            "VALUES (?, ?, ?)";
+    private static final String INSERT_OTHER_FILE = "INSERT INTO other_file (job_id, name, file, extension) " +
+            "VALUES (?, ?, ?, ?)";
 
 
 
