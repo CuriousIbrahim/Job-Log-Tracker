@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class DropdownAttribute extends BaseAttribute {
 
-    protected ComboBox<String> options;
+    private ComboBox<String> options;
 
     public DropdownAttribute (String labelName) {
         super(labelName);
