@@ -10,7 +10,6 @@ import java.util.ArrayList;
 public class DropdownAttribute extends BaseAttribute {
 
     protected ComboBox<String> options;
-    protected Button add;
 
     protected DropdownAttribute (String labelName) {
         super(labelName);
@@ -18,10 +17,8 @@ public class DropdownAttribute extends BaseAttribute {
         value = new GridPane();
 
         options = new ComboBox<>();
-        add = new Button("Add Option");
 
         ((GridPane)value).add(options, 1, 1);
-        ((GridPane)value).add(add, 2, 1);
 
         ((GridPane)value).setHgap(5);
 
