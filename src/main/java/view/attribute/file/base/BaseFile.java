@@ -44,7 +44,7 @@ public class BaseFile extends GridPane {
     }
 
     public BaseFile(String path) {
-        super();
+        this();
 
         filePath.setText(path);
     }
