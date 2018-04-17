@@ -10,7 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import view.attribute.TextAttribute;
-import view.attribute.DropdownAttribute;
+import view.attribute.dropdown.DropdownAttribute;
 import view.attribute.file.FileAttribute;
 
 import java.util.ArrayList;
@@ -38,13 +38,13 @@ public class InsertJobWindow extends Stage {
 
     public InsertJobWindow() {
 
-        submitBtn = new Button("Add");
-
-        mainGridPane = new GridPane();
-
         // ============================================================
         // Initialize variables
         // ============================================================
+
+        submitBtn = new Button("Add");
+
+        mainGridPane = new GridPane();
 
         title = new TextAttribute("Title");
         type = new DropdownAttribute("Type");
@@ -64,7 +64,6 @@ public class InsertJobWindow extends Stage {
         // ============================================================
         // Add to mainGridPane
         // ============================================================
-
 
         mainGridPane.add(title, 0, 0);
         mainGridPane.add(type, 2, 0);

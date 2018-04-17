@@ -1,6 +1,5 @@
-package view.attribute;
+package view.attribute.dropdown;
 
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.GridPane;
 import view.attribute.base.BaseAttribute;
