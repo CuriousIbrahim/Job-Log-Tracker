@@ -11,7 +11,7 @@ public class DropdownAttribute extends BaseAttribute {
 
     protected ComboBox<String> options;
 
-    protected DropdownAttribute (String labelName) {
+    public DropdownAttribute (String labelName) {
         super(labelName);
 
         value = new GridPane();
