@@ -52,4 +52,8 @@ public class BaseFile extends GridPane {
     public String getFilePath() {
         return filePath.getText();
     }
+
+    public void setFilePath(String filePath) {
+        this.filePath.setText(filePath);
+    }
 }
