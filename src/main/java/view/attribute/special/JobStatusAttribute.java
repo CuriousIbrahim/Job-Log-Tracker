@@ -23,6 +23,8 @@ public class JobStatusAttribute extends GridPane {
         add(options, 1, 0);
         add(datePicker, 2, 0);
 
+        setHgap(5);
+
     }
 
     public int getUniqueId() {
