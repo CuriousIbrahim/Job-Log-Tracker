@@ -2,12 +2,10 @@ package view.attribute.file;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import view.attribute.base.BaseAttribute;
-
-import java.io.File;
+import view.attribute.file.base.BaseFile;
 
 public class FileAttribute extends BaseAttribute {
 
@@ -20,31 +18,7 @@ public class FileAttribute extends BaseAttribute {
     public FileAttribute (String labelName) {
         super(labelName);
 
-        value = new GridPane();
-
-        filePath = new TextField();
-        button = new Button("Select File");
-
-        button.setOnAction(event -> {
-
-            fileChooserStage = new Stage();
-            fileChooser = new FileChooser();
-
-            File file = fileChooser.showOpenDialog(fileChooserStage);
-
-            if (file != null) {
-                filePath.setText(file.getAbsolutePath());
-            }
-
-        });
-
-        filePath.setEditable(false);
-
-
-        ((GridPane)value).add(filePath, 1, 1);
-        ((GridPane)value).add(button, 2, 1);
-
-        ((GridPane)value).setHgap(5);
+        value = new BaseFile();
 
         addValueNodeToPane();
 
