@@ -49,4 +49,7 @@ public class BaseFile extends GridPane {
         filePath.setText(path);
     }
 
+    public String getFilePath() {
+        return filePath.getText();
+    }
 }
