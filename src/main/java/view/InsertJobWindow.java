@@ -73,14 +73,17 @@ public class InsertJobWindow extends Stage {
         mainGridPane.add(company, 1, 1);
         mainGridPane.add(date, 2, 1);
 
-        mainGridPane.add(new Label("Description"), 0, 2);
-        mainGridPane.add(description, 0, 3, 3, 2);
+        mainGridPane.add(resume, 0, 2);
+        mainGridPane.add(coverLetter, 2, 2);
+
+        mainGridPane.add(new Label("Description"), 0, 3);
+        mainGridPane.add(description, 0, 4, 3, 2);
 
         // TODO: Display a List of DropDownAttribute and FileAttribute
 
         HBox buttonBox = new HBox(submitBtn);
         buttonBox.setAlignment(Pos.CENTER);
-        mainGridPane.add(buttonBox, 1, 6);
+        mainGridPane.add(buttonBox, 1, 7);
 
         // ============================================================
 
