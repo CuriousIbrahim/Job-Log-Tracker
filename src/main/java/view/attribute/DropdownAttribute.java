@@ -1,4 +1,4 @@
-package view.attribute.dropdown.base;
+package view.attribute;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;

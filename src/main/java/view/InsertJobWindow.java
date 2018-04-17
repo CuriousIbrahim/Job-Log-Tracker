@@ -5,7 +5,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import view.attribute.TextAttribute;
-import view.attribute.dropdown.base.DropdownAttribute;
+import view.attribute.DropdownAttribute;
 import view.attribute.file.FileAttribute;
 
 import java.util.List;
@@ -32,7 +32,16 @@ public class InsertJobWindow extends Stage {
 
     public InsertJobWindow() {
 
+        submitBtn = new Button("Add");
+
+        mainGridPane = new GridPane();
+
+        title = new TextAttribute("Title");
+        type = new DropdownAttribute("Type");
+
         GridPane row1 = new GridPane();
+
+
 
 
 
