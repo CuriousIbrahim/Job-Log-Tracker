@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import view.attribute.TextAttribute;
 import view.attribute.dropdown.DropdownAttribute;
 import view.attribute.file.FileAttribute;
+import view.attribute.special.JobStatusAttribute;
 import view.attribute.special.OtherFileAttribute;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class InsertJobWindow extends Stage {
 
     private TextArea description;
 
-    private List<DropdownAttribute> jobStatuses;
+    private JobStatusesList jobStatuses;
     private OtherFilesList otherFilesList;
 
     public InsertJobWindow() {
@@ -59,7 +60,7 @@ public class InsertJobWindow extends Stage {
 
         description = new TextArea();
 
-        jobStatuses = new ArrayList<>();
+        jobStatuses = new JobStatusesList();
         otherFilesList = new OtherFilesList();
 
         // ============================================================
@@ -80,11 +81,13 @@ public class InsertJobWindow extends Stage {
         mainGridPane.add(description, 0, 4, 3, 2);
 
         // TODO: Display a List of DropDownAttribute and FileAttribute
-        mainGridPane.add(otherFilesList, 0, 7, 3, 4);
+        mainGridPane.add(otherFilesList, 0, 7, 2, 4);
+        mainGridPane.add(jobStatuses, 2, 7, 2, 6);
+
 
         HBox buttonBox = new HBox(submitBtn);
         buttonBox.setAlignment(Pos.CENTER);
-        mainGridPane.add(buttonBox, 1, 11);
+        mainGridPane.add(buttonBox, 1, 14);
 
         // ============================================================
 
@@ -159,6 +162,73 @@ public class InsertJobWindow extends Stage {
             // Dynamic
             for (int i = 0; i < otherFileAttributes.size(); i++)
                 add(otherFileAttributes.get(i), 0, i+2, 3, 1);
+
+        }
+
+    }
+
+    class JobStatusesList extends GridPane {
+
+        private List<JobStatusAttribute> jobStatusAttributes;
+        private Button addNewBtn;
+
+        private final int MAX = 5;
+
+        public JobStatusesList () {
+            jobStatusAttributes = new ArrayList<>();
+
+            addNewBtn = new Button("Add New");
+
+            addNewBtn.setOnAction(event -> {
+                addItem();
+            });
+
+            load();
+
+            setHgap(10);
+            setVgap(10);
+
+        }
+
+        public void addItem() {
+
+            if (jobStatusAttributes.size() >= MAX) {
+                return;
+            }
+
+            getChildren().clear();
+
+            JobStatusAttribute temp = new JobStatusAttribute();
+            System.out.println(temp.getUniqueId());
+            temp.getXButton().setOnAction(event -> {
+                removeItem(temp.getUniqueId());
+            });
+
+            jobStatusAttributes.add(0, temp);
+
+            load();
+
+        }
+
+        private void removeItem(int id) {
+            for (int i = 0; i < jobStatusAttributes.size(); i++) {
+                if (id == jobStatusAttributes.get(i).getUniqueId())
+                    jobStatusAttributes.remove(i);
+            }
+
+            getChildren().clear();
+
+            load();
+        }
+
+        private void load() {
+            // Static
+            add(new Label("Job Statuses"), 0, 0);
+            add(addNewBtn, 1, 0);
+
+            // Dynamic
+            for (int i = 0; i < jobStatusAttributes.size(); i++)
+                add(jobStatusAttributes.get(i), 0, i+2, 3, 1);
 
         }
 
