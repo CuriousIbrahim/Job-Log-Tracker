@@ -17,6 +17,8 @@ public class OtherFileAttribute extends GridPane {
         add(name, 0, 0);
         add(file, 1, 0);
 
+        setHgap(5);
+
     }
 
     public OtherFileAttribute(String name, String filePath){
