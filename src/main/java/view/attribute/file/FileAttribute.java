@@ -9,12 +9,6 @@ import view.attribute.file.base.BaseFile;
 
 public class FileAttribute extends BaseAttribute {
 
-    private Button button;
-    private TextField filePath;
-
-    private FileChooser fileChooser;
-    private Stage fileChooserStage;
-
     public FileAttribute (String labelName) {
         super(labelName);
 
@@ -26,6 +20,6 @@ public class FileAttribute extends BaseAttribute {
 
     @Override
     public String getValue() {
-        return filePath.getText();
+        return ((BaseFile)value).getFilePath();
     }
 }
