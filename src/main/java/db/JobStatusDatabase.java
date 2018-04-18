@@ -1,7 +1,7 @@
 package db;
 
 import db.core.Database;
-import db.dao.base.BaseDAO;
+import db.dao.StatusDAO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JobStatusDatabase extends Database implements BaseDAO {
+public class JobStatusDatabase extends Database implements StatusDAO {
 
     private static final String[] DEFAULT_VALUES = {
             "Waiting",
