@@ -1,7 +1,7 @@
 package db;
 
 import db.core.Database;
-import db.dao.base.BaseDAO;
+import db.dao.JobDAO;
 import model.*;
 
 import java.sql.PreparedStatement;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JobDatabase extends Database implements BaseDAO {
+public class JobDatabase extends Database implements JobDAO {
 
     // Selecting
     private static final String ALL_JOB = "SELECT * FROM job";
