@@ -22,7 +22,7 @@ public class JobStatusDatabase extends Database implements StatusDAO {
 
     private static final String INSERT = "INSERT INTO status(status) VALUES (?)";
 
-    private static final String DELETE_ALL = "DELETE * FRM status";
+    private static final String DELETE_ALL = "DELETE FROM status";
 
     public JobStatusDatabase() throws SQLException { }
 
