@@ -11,6 +11,13 @@ import java.util.List;
 
 public class JobStatusDatabase extends Database implements BaseDAO {
 
+    private static final String[] DEFAULT_VALUES = {
+            "Waiting",
+            "Interview",
+            "Offer",
+            "Declined"
+    };
+
     private static final String ALL = "SELECT * FROM status";
 
     private static final String INSERT = "INSERT INTO status(status) VALUES (?)";
