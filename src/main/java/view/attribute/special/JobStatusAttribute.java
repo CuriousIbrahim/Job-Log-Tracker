@@ -17,6 +17,11 @@ public class JobStatusAttribute extends GridPane {
     private ComboBox<String> options;
     private DatePicker datePicker;
 
+    public JobStatusAttribute (List<String> options) {
+        this();
+        setOptions(options);
+    }
+
     public JobStatusAttribute() {
         id = MAIN_ID++;
         x = new Button("X");
