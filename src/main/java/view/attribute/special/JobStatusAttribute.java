@@ -6,6 +6,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.layout.GridPane;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class JobStatusAttribute extends GridPane {
 
@@ -28,6 +29,10 @@ public class JobStatusAttribute extends GridPane {
 
         setHgap(5);
 
+    }
+
+    public void addOption (String option) {
+        this.options.getItems().add(option);
     }
 
     public String getStatus() {
