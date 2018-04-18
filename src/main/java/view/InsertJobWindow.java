@@ -211,6 +211,9 @@ public class InsertJobWindow extends Stage {
 
         }
 
+        public List<OtherFileAttribute> getOtherFileAttributes() {
+            return otherFileAttributes;
+        }
     }
 
     class JobStatusesList extends GridPane {
@@ -278,5 +281,8 @@ public class InsertJobWindow extends Stage {
 
         }
 
+        public List<JobStatusAttribute> getJobStatusAttributes() {
+            return jobStatusAttributes;
+        }
     }
 }
