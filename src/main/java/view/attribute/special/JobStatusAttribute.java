@@ -35,6 +35,11 @@ public class JobStatusAttribute extends GridPane {
         this.options.getItems().add(option);
     }
 
+    public void setOptions(List<String> options) {
+        for (String option : options)
+            addOption(option);
+    }
+
     public String getStatus() {
         return options.getValue();
     }
