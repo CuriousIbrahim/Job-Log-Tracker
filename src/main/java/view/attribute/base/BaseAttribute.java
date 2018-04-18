@@ -23,6 +23,9 @@ public abstract class BaseAttribute extends GridPane {
         add(value, 1, 0);
     }
 
-    public abstract String getValue();
+    public abstract Object getValue();
+
+
+
 
 }
