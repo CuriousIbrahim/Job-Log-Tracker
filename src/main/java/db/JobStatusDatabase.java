@@ -3,19 +3,29 @@ package db;
 import db.core.Database;
 import db.dao.base.BaseDAO;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class JobStatusDatabase extends Database implements BaseDAO {
 
-    public JobStatusDatabase() throws SQLException {
+    private static final String ALL ="SELECT * FROM status";
 
-
-    }
+    public JobStatusDatabase() throws SQLException { }
 
     @Override
-    public List<?> all() throws SQLException {
-        return null;
+    public List<String> all() throws SQLException {
+        ResultSet rs = runQuery(ALL);
+
+        List<String> toReturn = new ArrayList<>();
+
+        while (rs.next()) {
+            toReturn.add(rs.getString("status"));
+        }
+
+        return toReturn;
+
     }
 
     @Override
