@@ -17,7 +17,7 @@ public class DatePickerAttribute extends BaseAttribute {
     }
 
     @Override
-    public String getValue() {
-        return null;
+    public LocalDate getValue() {
+        return ((DatePicker)value).getValue();
     }
 }
