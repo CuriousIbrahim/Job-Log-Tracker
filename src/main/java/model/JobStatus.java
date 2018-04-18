@@ -12,6 +12,11 @@ public class JobStatus {
         this.status = status;
     }
 
+    public JobStatus(int timestamp, String status) {
+        this.timestamp = timestamp;
+        this.status = status;
+    }
+
     public int getJobId() {
         return jobId;
     }
