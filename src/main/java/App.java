@@ -1,3 +1,4 @@
+import controller.StatusController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import view.InsertJobWindow;
@@ -14,6 +15,7 @@ public class App extends Application {
         primaryStage = new InsertJobWindow();
 
         new AddJobController((InsertJobWindow)primaryStage);
+        new StatusController((InsertJobWindow)primaryStage);
 
         primaryStage.show();
     }
