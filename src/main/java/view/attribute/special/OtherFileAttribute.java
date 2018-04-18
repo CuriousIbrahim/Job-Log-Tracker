@@ -39,6 +39,10 @@ public class OtherFileAttribute extends GridPane {
         return name.getText();
     }
 
+    public String getFile() {
+        return file.getFilePath();
+    }
+
     public Button getXButton() {
         return x;
     }
