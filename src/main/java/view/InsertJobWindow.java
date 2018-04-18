@@ -101,6 +101,50 @@ public class InsertJobWindow extends Stage {
 
     }
 
+    public Button getSubmitBtn() {
+        return submitBtn;
+    }
+
+    public String getJobTitle() {
+        return title.getValue();
+    }
+
+    public String getType() {
+        return type.getValue();
+    }
+
+    public String getLocation() {
+        return location.getValue();
+    }
+
+    public String getCompany() {
+        return company.getValue();
+    }
+
+    public String getDate() {
+        return date.getValue();
+    }
+
+    public String getResume() {
+        return resume.getValue();
+    }
+
+    public String getCoverLetter() {
+        return coverLetter.getValue();
+    }
+
+    public String getDescription() {
+        return description.getText();
+    }
+
+    public JobStatusesList getJobStatuses() {
+        return jobStatuses;
+    }
+
+    public OtherFilesList getOtherFilesList() {
+        return otherFilesList;
+    }
+
     class OtherFilesList extends GridPane {
 
         private List<OtherFileAttribute> otherFileAttributes;
