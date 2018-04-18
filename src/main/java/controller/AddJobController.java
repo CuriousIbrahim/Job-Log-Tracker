@@ -1,7 +1,7 @@
 package controller;
 
 import db.JobDatabase;
-import db.dao.base.BaseDAO;
+import db.dao.JobDAO;
 import model.*;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
@@ -19,7 +19,7 @@ import java.util.List;
 
 public class AddJobController {
 
-    private BaseDAO jobDB;
+    private JobDAO jobDB;
 
     public AddJobController(InsertJobWindow window) throws SQLException {
 
