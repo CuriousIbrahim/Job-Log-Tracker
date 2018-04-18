@@ -141,12 +141,12 @@ public class InsertJobWindow extends Stage {
         return description.getText();
     }
 
-    public JobStatusesList getJobStatuses() {
-        return jobStatuses;
+    public List<JobStatusAttribute> getJobStatuses() {
+        return jobStatuses.getJobStatusAttributes();
     }
 
-    public OtherFilesList getOtherFilesList() {
-        return otherFilesList;
+    public List<OtherFileAttribute> getOtherFilesList() {
+        return otherFilesList.getOtherFileAttributes();
     }
 
 }
