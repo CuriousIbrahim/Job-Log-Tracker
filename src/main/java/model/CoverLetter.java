@@ -12,6 +12,11 @@ public class CoverLetter {
         this.extension = extension;
     }
 
+    public CoverLetter(byte[] coverLetter, String extension) {
+        this.coverLetter = coverLetter;
+        this.extension = extension;
+    }
+
     public int getJobId() {
         return jobId;
     }
