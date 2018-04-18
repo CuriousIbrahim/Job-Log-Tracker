@@ -149,4 +149,8 @@ public class InsertJobWindow extends Stage {
         return otherFilesList.getOtherFileAttributes();
     }
 
+    public void setStatusOptions(List<String> options) {
+        this.jobStatuses.setOptions(options);
+    }
+
 }
