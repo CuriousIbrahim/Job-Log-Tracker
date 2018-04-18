@@ -22,6 +22,8 @@ public class JobStatusDatabase extends Database implements BaseDAO {
 
     private static final String INSERT = "INSERT INTO status(status) VALUES (?)";
 
+    private static final String DELETE_ALL = "DELETE * FRM status";
+
     public JobStatusDatabase() throws SQLException { }
 
     @Override
@@ -40,6 +42,11 @@ public class JobStatusDatabase extends Database implements BaseDAO {
 
     @Override
     public void clear() throws SQLException {
+
+        runSql(DELETE_ALL);
+
+        for (String sql : DEFAULT_VALUES)
+            insert(sql);
 
     }
 
