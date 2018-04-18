@@ -9,12 +9,14 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import view.attribute.DatePickerAttribute;
 import view.attribute.TextAttribute;
 import view.attribute.dropdown.DropdownAttribute;
 import view.attribute.file.FileAttribute;
 import view.attribute.special.JobStatusAttribute;
 import view.attribute.special.OtherFileAttribute;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +30,7 @@ public class InsertJobWindow extends Stage {
 
     private TextAttribute location;
     private TextAttribute company;
-    private TextAttribute date;
+    private DatePickerAttribute date;
 
     private FileAttribute resume;
     private FileAttribute coverLetter;
@@ -53,7 +55,7 @@ public class InsertJobWindow extends Stage {
 
         location = new TextAttribute("Location");
         company = new TextAttribute("Company");
-        date = new TextAttribute("Date");
+        date = new DatePickerAttribute("Date", true);
 
         resume = new FileAttribute("Resume");
         coverLetter = new FileAttribute("Cover Letter");
@@ -121,7 +123,7 @@ public class InsertJobWindow extends Stage {
         return company.getValue();
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date.getValue();
     }
 
