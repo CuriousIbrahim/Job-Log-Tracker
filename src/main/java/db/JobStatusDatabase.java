@@ -3,6 +3,7 @@ package db;
 import db.core.Database;
 import db.dao.base.BaseDAO;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,7 +11,9 @@ import java.util.List;
 
 public class JobStatusDatabase extends Database implements BaseDAO {
 
-    private static final String ALL ="SELECT * FROM status";
+    private static final String ALL = "SELECT * FROM status";
+
+    private static final String INSERT = "INSERT INTO status(status) VALUES (?)";
 
     public JobStatusDatabase() throws SQLException { }
 
@@ -35,6 +38,20 @@ public class JobStatusDatabase extends Database implements BaseDAO {
 
     @Override
     public void insert(Object o) throws SQLException {
+
+        String status;
+
+        if (o instanceof String)
+            status = (String) o;
+        else
+            return;
+
+
+        PreparedStatement statement = conn.prepareStatement(INSERT);
+
+        statement.setString(1, status);
+
+        statement.executeUpdate();
 
     }
 
