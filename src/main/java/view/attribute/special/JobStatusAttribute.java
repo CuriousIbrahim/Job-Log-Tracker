@@ -26,7 +26,7 @@ public class JobStatusAttribute extends GridPane {
         id = MAIN_ID++;
         x = new Button("X");
         options = new ComboBox<>();
-        datePicker = new DatePicker();
+        datePicker = new DatePicker(LocalDate.now());
 
         add(x, 0, 0);
         add(options, 1, 0);
