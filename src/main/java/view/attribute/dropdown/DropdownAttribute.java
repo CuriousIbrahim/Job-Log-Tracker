@@ -5,6 +5,7 @@ import javafx.scene.layout.GridPane;
 import view.attribute.base.BaseAttribute;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DropdownAttribute extends BaseAttribute {
 
@@ -28,7 +29,7 @@ public class DropdownAttribute extends BaseAttribute {
         this.options.getItems().add(option);
     }
 
-    protected void setOptions(ArrayList<String> options) {
+    protected void setOptions(List<String> options) {
         this.options.getItems().clear();
 
         for (String o : options) {
