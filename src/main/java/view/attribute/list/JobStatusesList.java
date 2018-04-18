@@ -13,6 +13,8 @@ public class JobStatusesList extends GridPane {
     private List<JobStatusAttribute> jobStatusAttributes;
     private Button addNewBtn;
 
+    private List<String> options;
+
     private final int MAX = 5;
 
     public JobStatusesList () {
@@ -39,7 +41,12 @@ public class JobStatusesList extends GridPane {
 
         getChildren().clear();
 
-        JobStatusAttribute temp = new JobStatusAttribute();
+        JobStatusAttribute temp;
+        if (options != null)
+            temp = new JobStatusAttribute(options);
+        else
+            temp = new JobStatusAttribute();
+
         System.out.println(temp.getUniqueId());
         temp.getXButton().setOnAction(event -> {
             removeItem(temp.getUniqueId());
@@ -71,6 +78,13 @@ public class JobStatusesList extends GridPane {
         for (int i = 0; i < jobStatusAttributes.size(); i++)
             add(jobStatusAttributes.get(i), 0, i+2, 3, 1);
 
+    }
+
+    public void setOptions(List<String> options) {
+        this.options = options;
+
+        for (JobStatusAttribute a : jobStatusAttributes)
+            a.setOptions(options);
     }
 
     public List<JobStatusAttribute> getJobStatusAttributes() {
