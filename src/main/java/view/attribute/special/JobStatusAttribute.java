@@ -5,6 +5,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.layout.GridPane;
 
+import java.time.LocalDate;
+
 public class JobStatusAttribute extends GridPane {
 
     private static int MAIN_ID = 0;
@@ -26,6 +28,14 @@ public class JobStatusAttribute extends GridPane {
 
         setHgap(5);
 
+    }
+
+    public String getStatus() {
+        return options.getValue();
+    }
+
+    public LocalDate getDate() {
+        return datePicker.getValue();
     }
 
     public int getUniqueId() {
