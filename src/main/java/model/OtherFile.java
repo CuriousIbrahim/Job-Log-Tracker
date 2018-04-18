@@ -14,6 +14,12 @@ public class OtherFile {
         this.extension = extension;
     }
 
+    public OtherFile(String name, byte[] file, String extension) {
+        this.name = name;
+        this.file = file;
+        this.extension = extension;
+    }
+
     public int getJobId() {
         return jobId;
     }
