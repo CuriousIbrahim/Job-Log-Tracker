@@ -47,7 +47,6 @@ public class JobStatusesList extends GridPane {
         else
             temp = new JobStatusAttribute();
 
-        System.out.println(temp.getUniqueId());
         temp.getXButton().setOnAction(event -> {
             removeItem(temp.getUniqueId());
         });
