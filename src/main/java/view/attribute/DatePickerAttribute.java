@@ -14,6 +14,8 @@ public class DatePickerAttribute extends BaseAttribute {
 
         if(now)
             ((DatePicker)value).setValue(LocalDate.now());
+
+        addValueNodeToPane();
     }
 
     @Override
