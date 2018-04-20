@@ -3,11 +3,12 @@ package view;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AllJobViewer extends GridPane {
+public class AllJobViewer extends Stage {
 
     private static final int MAX_COLUMN_COUNT = 4;
 
@@ -40,10 +41,10 @@ public class AllJobViewer extends GridPane {
 
         }
 
-        setHgap(10);
-        setVgap(10);
+        allCards.setHgap(10);
+        allCards.setVgap(10);
 
-        setBorder(new Border(
+        allCards.setBorder(new Border(
                 new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)
         ));
 
