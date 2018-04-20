@@ -44,24 +44,6 @@ public class AllJobViewer extends Stage {
 
     }
 
-    public AllJobViewer(List<Integer> jobId, List<String> jobTitle, List<String> jobType, List<String> company,
-                        List<String> currentStatus) {
-
-
-        this();
-
-        for (int i = 0; i < jobId.size(); i++) {
-
-            Card card = new Card(
-                    jobId.get(i), jobTitle.get(i), jobType.get(i), company.get(i), currentStatus.get(i)
-            );
-
-            addCard(card);
-
-        }
-
-    }
-
     private void addCard(Card card) {
 
         if (column_count > MAX_COLUMN_COUNT) {
