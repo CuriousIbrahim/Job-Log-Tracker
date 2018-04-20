@@ -26,7 +26,15 @@ public class AllJobViewer extends GridPane {
         allJobs = new ArrayList<>();
 
 
+        for (int i = 0; i < jobId.size(); i++) {
 
+            Card card = new Card(
+                    jobId.get(i), jobTitle.get(i), jobType.get(i), company.get(i), currentStatus.get(i)
+            );
+
+            addCard(card);
+
+        }
 
     }
 
