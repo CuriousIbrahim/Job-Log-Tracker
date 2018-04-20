@@ -10,6 +10,9 @@ public class AllJobViewer extends GridPane {
 
     private static final int MAX_COLUMN_COUNT = 4;
 
+    private int column_count = 0;
+    private int row_count= 0;
+
     private Button addNewJob;
 
     private GridPane allCards;
@@ -24,6 +27,17 @@ public class AllJobViewer extends GridPane {
 
 
 
+
+    }
+
+    private void addCard(Card card) {
+
+        if (column_count > MAX_COLUMN_COUNT)
+            column_count = 0;
+
+        this.allJobs.add(card);
+
+        allCards.add(card, column_count++, row_count++);
 
     }
 
