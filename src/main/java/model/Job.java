@@ -144,4 +144,18 @@ public class Job {
     public void setOtherFiles(List<OtherFile> otherFiles) {
         this.otherFiles = otherFiles;
     }
+
+    public String getCurrentJobStatus() {
+        JobStatus largest = null;
+
+        largest = jobStatuses.get(0);
+
+        for (JobStatus s : jobStatuses) {
+            if (s.getTimestamp() > largest.getTimestamp()) {
+                largest = s;
+            }
+        }
+
+        return largest;
+    }
 }
