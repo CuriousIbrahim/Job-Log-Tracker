@@ -1,8 +1,8 @@
 package view;
 
+import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 
-import java.awt.*;
 import java.util.List;
 
 public class AllJobViewer extends GridPane {
