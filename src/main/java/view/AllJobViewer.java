@@ -8,6 +8,8 @@ import java.util.List;
 
 public class AllJobViewer extends GridPane {
 
+    private static final int MAX_COLUMN_COUNT = 4;
+
     private Button addNewJob;
 
     private GridPane allCards;
@@ -24,5 +26,6 @@ public class AllJobViewer extends GridPane {
 
 
     }
+
 
 }
