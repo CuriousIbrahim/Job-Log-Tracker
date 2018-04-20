@@ -145,7 +145,7 @@ public class Job {
         this.otherFiles = otherFiles;
     }
 
-    public String getCurrentJobStatus() {
+    public JobStatus getCurrentJobStatus() {
         JobStatus largest = null;
 
         largest = jobStatuses.get(0);
