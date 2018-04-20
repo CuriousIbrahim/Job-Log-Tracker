@@ -19,13 +19,16 @@ public class AllJobViewer extends GridPane {
     private GridPane allCards;
     private List<Card> allJobs;
 
+    public AllJobViewer() {
+        allCards = new GridPane();
+        allJobs = new ArrayList<>();
+    }
+
     public AllJobViewer(List<Integer> jobId, List<String> jobTitle, List<String> jobType, List<String> company,
                         List<String> currentStatus) {
 
 
-        allCards = new GridPane();
-        allJobs = new ArrayList<>();
-
+        this();
 
         for (int i = 0; i < jobId.size(); i++) {
 
