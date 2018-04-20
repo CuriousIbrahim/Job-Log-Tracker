@@ -1,7 +1,8 @@
 package view;
 
 import javafx.scene.control.Button;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,13 @@ public class AllJobViewer extends GridPane {
             addCard(card);
 
         }
+
+        setHgap(10);
+        setVgap(10);
+
+        setBorder(new Border(
+                new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)
+        ));
 
     }
 
