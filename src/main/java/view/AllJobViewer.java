@@ -1,5 +1,6 @@
 package view;
 
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
@@ -24,6 +25,23 @@ public class AllJobViewer extends Stage {
     public AllJobViewer() {
         allCards = new GridPane();
         allJobs = new ArrayList<>();
+
+        allCards.setHgap(25);
+        allCards.setVgap(25);
+
+        allCards.setPadding(new Insets(10));
+
+        System.out.println(allCards.getPadding());
+
+
+        allCards.setBorder(new Border(
+                new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)
+        ));
+
+        Scene scene = new Scene(allCards);
+
+        setScene(scene);
+
     }
 
     public AllJobViewer(List<Integer> jobId, List<String> jobTitle, List<String> jobType, List<String> company,
@@ -42,23 +60,20 @@ public class AllJobViewer extends Stage {
 
         }
 
-        allCards.setHgap(10);
-        allCards.setVgap(10);
-
-        allCards.setBorder(new Border(
-                new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)
-        ));
-
     }
 
     private void addCard(Card card) {
 
-        if (column_count > MAX_COLUMN_COUNT)
+        if (column_count > MAX_COLUMN_COUNT) {
             column_count = 0;
+            row_count++;
+        }
 
         this.allJobs.add(card);
 
-        allCards.add(card, column_count++, row_count++);
+        System.out.println("column:" + column_count + " row:" + row_count);
+
+        allCards.add(card, column_count++, row_count);
 
     }
 
@@ -68,12 +83,6 @@ public class AllJobViewer extends Stage {
         );
 
         addCard(card);
-    }
-
-    public void render() {
-        Scene scene = new Scene(allCards);
-
-        setScene(scene);
     }
 
 
