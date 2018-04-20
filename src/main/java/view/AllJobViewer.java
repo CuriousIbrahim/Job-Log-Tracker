@@ -57,5 +57,13 @@ public class AllJobViewer extends GridPane {
 
     }
 
+    public void addJob(int jobId, String jobTitle, String jobType, String company, String currentStatus) {
+        Card card = new Card(
+                jobId, jobTitle, jobType, company, currentStatus
+        );
+
+        addCard(card);
+    }
+
 
 }
