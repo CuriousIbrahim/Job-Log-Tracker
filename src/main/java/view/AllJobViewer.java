@@ -1,5 +1,6 @@
 package view;
 
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -67,6 +68,12 @@ public class AllJobViewer extends Stage {
         );
 
         addCard(card);
+    }
+
+    public void render() {
+        Scene scene = new Scene(allCards);
+
+        setScene(scene);
     }
 
 
