@@ -43,10 +43,13 @@ public class JobStatusDatabase extends Database implements StatusDAO {
     @Override
     public void clear() throws SQLException {
 
-        runSql(DELETE_ALL);
+        if (!runQuery(ALL).next()) {
+            runSql(DELETE_ALL);
 
-        for (String sql : DEFAULT_VALUES)
-            insert(sql);
+            for (String sql : DEFAULT_VALUES)
+                insert(sql);
+
+        }
 
     }
 
