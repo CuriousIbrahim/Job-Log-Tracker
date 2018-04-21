@@ -44,9 +44,9 @@ public class AddJobController {
                             FilenameUtils.getExtension(window.getResume())
                     );
                 } catch (FileNotFoundException e) {
-                    System.out.println(e);
+                    e.printStackTrace(System.out);
                 } catch (IOException e) {
-                    System.out.println(e);
+                    e.printStackTrace(System.out);
                 }
             }
 
@@ -58,9 +58,9 @@ public class AddJobController {
                             FilenameUtils.getExtension(window.getCoverLetter())
                     );
                 } catch (FileNotFoundException e) {
-                    System.out.println(e);
+                    e.printStackTrace(System.out);
                 } catch (IOException e) {
-                    System.out.println(e);
+                    e.printStackTrace(System.out);
                 }
             }
 
@@ -83,9 +83,9 @@ public class AddJobController {
                             FilenameUtils.getExtension(o.getFile())
                     ));
                 } catch (FileNotFoundException e) {
-                    System.out.println(e);
+                    e.printStackTrace(System.out);
                 } catch (IOException e) {
-                    System.out.println(e);
+                    e.printStackTrace(System.out);
                 }
             }
 
@@ -95,7 +95,7 @@ public class AddJobController {
             try {
                 jobDB.insert(job);
             } catch (SQLException e) {
-                System.out.println(e);
+                e.printStackTrace(System.out);
             }
 
             window.close();

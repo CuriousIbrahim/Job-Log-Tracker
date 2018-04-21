@@ -26,7 +26,7 @@ public class CoreDatabase {
             return stmt.executeQuery(sql);
 
         } catch (SQLException e) {
-            System.out.println(e);
+            e.printStackTrace(System.out);
             return null;
         }
 
@@ -42,7 +42,7 @@ public class CoreDatabase {
             return true;
 
         } catch (SQLException e) {
-            System.out.println(e);
+            e.printStackTrace(System.out);
             return false;
         }
     }

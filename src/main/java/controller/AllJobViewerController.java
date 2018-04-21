@@ -3,6 +3,7 @@ package controller;
 import db.dao.JobDAO;
 import db.JobDatabase;
 
+import javafx.event.ActionEvent;
 import model.Job;
 import view.AllJobViewer;
 import view.InsertJobWindow;
@@ -25,6 +26,17 @@ public class AllJobViewerController {
 
             InsertJobWindow insertJobWindow = new InsertJobWindow();
 
+            insertJobWindow.addEventHandler(ActionEvent.ACTION, (e) -> {
+
+                view.clearCards();
+                try {
+                    addJobsToView(view);
+                } catch (SQLException e1) {
+                    e1.printStackTrace(System.out);
+                }
+
+            });
+
             try {
 
                 new AddJobController(insertJobWindow);
@@ -34,7 +46,7 @@ public class AllJobViewerController {
 
 
             } catch (SQLException e) {
-                System.out.println(e);
+                e.printStackTrace(System.out);
             }
 
         });
