@@ -23,6 +23,9 @@ public class AllJobViewer extends Stage {
     private List<Card> allJobs;
 
     public AllJobViewer() {
+
+        addNewJob = new Button("Add Job");
+
         allCards = new GridPane();
         allJobs = new ArrayList<>();
 
