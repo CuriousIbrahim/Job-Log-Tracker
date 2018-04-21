@@ -22,6 +22,8 @@ public class JobTypeDatabase extends Database implements TypeDAO {
 
     private static final String INSERT = "INSERT INTO type (type) VALUES (?)";
 
+    private static final String DELETE_ALL = "DELETE FROM type";
+
     public JobTypeDatabase() throws SQLException {
 
     }
@@ -40,6 +42,14 @@ public class JobTypeDatabase extends Database implements TypeDAO {
 
     @Override
     public void clear() throws SQLException {
+
+        if (runQuery(ALL).next())
+            return;
+
+        runSql(DELETE_ALL);
+
+        for (String d : DEFAULT_VALUES)
+            insert(d);
 
     }
 
