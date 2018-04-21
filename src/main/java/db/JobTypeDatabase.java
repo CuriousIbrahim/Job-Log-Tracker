@@ -3,6 +3,7 @@ package db;
 import db.core.Database;
 import db.dao.TypeDAO;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,6 +19,8 @@ public class JobTypeDatabase extends Database implements TypeDAO {
     };
 
     private static final String ALL = "SELECT * FROM type";
+
+    private static final String INSERT = "INSERT INTO type (type) VALUES (?)";
 
     public JobTypeDatabase() throws SQLException {
 
@@ -42,6 +45,20 @@ public class JobTypeDatabase extends Database implements TypeDAO {
 
     @Override
     public void insert(Object o) throws SQLException {
+
+        String toInsert;
+
+        if (o instanceof String)
+            toInsert = (String) o;
+        else
+            return;
+
+        PreparedStatement statement = conn.prepareStatement(INSERT);
+
+        statement.setString(1, toInsert);
+
+        statement.executeUpdate();
+
 
     }
 
