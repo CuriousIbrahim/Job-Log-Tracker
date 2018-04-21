@@ -1,6 +1,7 @@
 package view;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
@@ -22,7 +23,11 @@ public class AllJobViewer extends Stage {
     private GridPane allCards;
     private List<Card> allJobs;
 
+    private GridPane mainPane;
+
     public AllJobViewer() {
+
+        mainPane = new GridPane();
 
         addNewJob = new Button("Add Job");
 
@@ -41,7 +46,14 @@ public class AllJobViewer extends Stage {
                 new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)
         ));
 
-        Scene scene = new Scene(allCards);
+
+        HBox buttonBox = new HBox(addNewJob);
+        buttonBox.setAlignment(Pos.TOP_LEFT);
+
+        mainPane.add(buttonBox, 0, 0, 10, 1);
+        mainPane.add(allCards, 0, 1, 10, 8);
+
+        Scene scene = new Scene(mainPane);
 
         setScene(scene);
 
