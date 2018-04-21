@@ -10,6 +10,13 @@ import java.util.List;
 
 public class JobTypeDatabase extends Database implements TypeDAO {
 
+    private static final String[] DEFAULT_VALUES = {
+            "Part Time",
+            "Full Time",
+            "Contract",
+            "Temporary"
+    };
+
     private static final String ALL = "SELECT * FROM type";
 
     public JobTypeDatabase() throws SQLException {
