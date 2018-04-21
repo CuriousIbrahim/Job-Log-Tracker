@@ -113,6 +113,10 @@ public class InsertJobWindow extends Stage {
         return title.getValue();
     }
 
+    public void setTypes(List<String> options) {
+        type.setOptions(options);
+    }
+
     public String getType() {
         return type.getValue();
     }
