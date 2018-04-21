@@ -3,10 +3,14 @@ package db;
 import db.core.Database;
 import db.dao.TypeDAO;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class JobTypeDatabase extends Database implements TypeDAO {
+
+    private static final String ALL = "SELECT * FROM type";
 
     public JobTypeDatabase() throws SQLException {
 
@@ -14,7 +18,14 @@ public class JobTypeDatabase extends Database implements TypeDAO {
 
     @Override
     public List<String> all() throws SQLException {
-        return null;
+        List<String> jobTypes = new ArrayList<>();
+
+        ResultSet resultSet = runQuery(ALL);
+
+        while (resultSet.next())
+            jobTypes.add(resultSet.getString(1));
+
+        return jobTypes;
     }
 
     @Override
