@@ -53,6 +53,8 @@ public class AllJobViewer extends Stage {
         mainPane.add(buttonBox, 0, 0, 10, 1);
         mainPane.add(allCards, 0, 1, 10, 8);
 
+        allCards.setMinSize(700, 700);
+
         Scene scene = new Scene(mainPane);
 
         setScene(scene);
