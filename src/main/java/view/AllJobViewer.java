@@ -55,6 +55,8 @@ public class AllJobViewer extends Stage {
 
         allCards.setMinSize(700, 700);
 
+        mainPane.setPadding(new Insets(15));
+
         Scene scene = new Scene(mainPane);
 
         setScene(scene);
