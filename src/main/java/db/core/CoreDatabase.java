@@ -7,7 +7,7 @@ public class CoreDatabase {
     private static final String SQLITE_URL = "jdbc:sqlite:";
     private static final String EXTENSION = ".db";
 
-    public Connection conn;
+    public static Connection conn;
 
     public CoreDatabase(String dbName) throws SQLException  {
 
