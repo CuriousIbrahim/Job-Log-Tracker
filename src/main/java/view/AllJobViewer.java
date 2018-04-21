@@ -90,4 +90,10 @@ public class AllJobViewer extends Stage {
     public Button getAddNewJobBtn() {
         return addNewJob;
     }
+
+    public void clearCards () {
+
+        allCards.getChildren().clear();
+
+    }
 }

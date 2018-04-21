@@ -19,6 +19,29 @@ public class AllJobViewerController {
 
         jobDB = new JobDatabase();
 
+        addJobsToView(view);
+
+        view.getAddNewJobBtn().setOnAction(event -> {
+
+            InsertJobWindow insertJobWindow = new InsertJobWindow();
+
+            try {
+
+                new AddJobController(insertJobWindow);
+                new StatusController(insertJobWindow);
+
+                insertJobWindow.show();
+
+
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+
+        });
+
+    }
+
+    private void addJobsToView(AllJobViewer view) throws SQLException{
         List<Integer> jobId = new ArrayList<>();
         List<String> jobTitle = new ArrayList<>();
         List<String> jobType = new ArrayList<>();
@@ -39,24 +62,5 @@ public class AllJobViewerController {
         for (int i = 0; i < jobId.size(); i++) {
             view.addJob(jobId.get(i), jobTitle.get(i), jobType.get(i), company.get(i), currentStatus.get(i));
         }
-
-        view.getAddNewJobBtn().setOnAction(event -> {
-
-            InsertJobWindow insertJobWindow = new InsertJobWindow();
-
-            try {
-
-                new AddJobController(insertJobWindow);
-                new StatusController(insertJobWindow);
-
-                insertJobWindow.show();
-
-
-            } catch (SQLException e) {
-                System.out.println(e);
-            }
-
-        });
-
     }
 }
