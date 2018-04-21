@@ -29,7 +29,7 @@ public class DropdownAttribute extends BaseAttribute {
         this.options.getItems().add(option);
     }
 
-    protected void setOptions(List<String> options) {
+    public void setOptions(List<String> options) {
         this.options.getItems().clear();
 
         for (String o : options) {
