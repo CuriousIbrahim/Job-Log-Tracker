@@ -87,5 +87,7 @@ public class AllJobViewer extends Stage {
         addCard(card);
     }
 
-
+    public Button getAddNewJobBtn() {
+        return addNewJob;
+    }
 }
