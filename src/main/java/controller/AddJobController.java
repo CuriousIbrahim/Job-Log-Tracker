@@ -51,15 +51,17 @@ public class AddJobController {
             }
 
             CoverLetter coverLetter = null;
-            try {
-                coverLetter = new CoverLetter(
-                        IOUtils.toByteArray(new FileInputStream(window.getCoverLetter())),
-                        FilenameUtils.getExtension(window.getCoverLetter())
-                );
-            } catch (FileNotFoundException e) {
-                System.out.println(e);
-            } catch(IOException e) {
-                System.out.println(e);
+            if (window.getCoverLetter() != null) {
+                try {
+                    coverLetter = new CoverLetter(
+                            IOUtils.toByteArray(new FileInputStream(window.getCoverLetter())),
+                            FilenameUtils.getExtension(window.getCoverLetter())
+                    );
+                } catch (FileNotFoundException e) {
+                    System.out.println(e);
+                } catch (IOException e) {
+                    System.out.println(e);
+                }
             }
 
             List<JobStatus> jobStatuses = new ArrayList<>();
