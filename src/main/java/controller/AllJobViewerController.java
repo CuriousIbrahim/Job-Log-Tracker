@@ -41,6 +41,7 @@ public class AllJobViewerController {
 
                 new AddJobController(insertJobWindow);
                 new StatusController(insertJobWindow);
+                new TypeController(insertJobWindow);
 
                 insertJobWindow.show();
 
