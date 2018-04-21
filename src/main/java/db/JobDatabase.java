@@ -73,9 +73,11 @@ public class JobDatabase extends Database implements JobDAO {
 
             // Get cover letter
             ResultSet rsCoverLetter = runQuery(GET_COVER_LETTER+id);
-            CoverLetter coverLetter = new CoverLetter(rsCoverLetter.getInt(1),
-                                                      rsCoverLetter.getBytes(2),
-                                                      rsCoverLetter.getString(3));
+            CoverLetter coverLetter = null;
+            if (rsCoverLetter.next())
+                coverLetter = new CoverLetter(rsCoverLetter.getInt(1),
+                                                          rsCoverLetter.getBytes(2),
+                                                          rsCoverLetter.getString(3));
 
             // Get all other files
             List<OtherFile> otherFiles = new ArrayList<>();
