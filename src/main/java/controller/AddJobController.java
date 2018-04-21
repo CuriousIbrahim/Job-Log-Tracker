@@ -37,15 +37,17 @@ public class AddJobController {
             String location = window.getLocation();
 
             Resume resume = null;
-            try {
-                resume = new Resume(
-                        IOUtils.toByteArray(new FileInputStream(window.getResume())),
-                        FilenameUtils.getExtension(window.getResume())
-                );
-            } catch (FileNotFoundException e) {
-                System.out.println(e);
-            } catch(IOException e) {
-                System.out.println(e);
+            if (window.getResume() != null) {
+                try {
+                    resume = new Resume(
+                            IOUtils.toByteArray(new FileInputStream(window.getResume())),
+                            FilenameUtils.getExtension(window.getResume())
+                    );
+                } catch (FileNotFoundException e) {
+                    System.out.println(e);
+                } catch (IOException e) {
+                    System.out.println(e);
+                }
             }
 
             CoverLetter coverLetter = null;
