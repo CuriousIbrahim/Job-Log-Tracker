@@ -98,7 +98,7 @@ public class AddJobController {
                 System.out.println(e);
             }
 
-
+            window.close();
 
 
         });

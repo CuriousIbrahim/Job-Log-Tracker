@@ -44,10 +44,6 @@ public class AllJobViewerController {
 
             InsertJobWindow insertJobWindow = new InsertJobWindow();
 
-            insertJobWindow.getSubmitBtn().setOnAction(event1 -> {
-                insertJobWindow.close();
-            });
-
             try {
 
                 new AddJobController(insertJobWindow);
