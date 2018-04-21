@@ -37,7 +37,7 @@ public class AddJobController {
             String location = window.getLocation();
 
             Resume resume = null;
-            if (window.getResume() != null) {
+            if (window.getResume() != null && !window.getResume().equals("")) {
                 try {
                     resume = new Resume(
                             IOUtils.toByteArray(new FileInputStream(window.getResume())),
@@ -51,7 +51,7 @@ public class AddJobController {
             }
 
             CoverLetter coverLetter = null;
-            if (window.getCoverLetter() != null) {
+            if (window.getCoverLetter() != null && !window.getCoverLetter().equals("")) {
                 try {
                     coverLetter = new CoverLetter(
                             IOUtils.toByteArray(new FileInputStream(window.getCoverLetter())),
