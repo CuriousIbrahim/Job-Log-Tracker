@@ -26,7 +26,7 @@ public class AllJobViewerController {
 
             InsertJobWindow insertJobWindow = new InsertJobWindow();
 
-            insertJobWindow.addEventHandler(ActionEvent.ACTION, (e) -> {
+            insertJobWindow.getSubmitBtn().addEventHandler(ActionEvent.ACTION, (e) -> {
 
                 view.clearCards();
                 try {
