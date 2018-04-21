@@ -148,12 +148,14 @@ public class JobDatabase extends Database implements JobDAO {
         // Set job id for Job and for other attributes in Job that require it
         job.setId(id);
 
-        // Insert resume
-        stmt = conn.prepareStatement(INSERT_RESUME);
-        stmt.setInt(1, job.getId());
-        stmt.setBytes(2, job.getResume().getResume());
-        stmt.setString(3, job.getResume().getExtension());
-        stmt.executeUpdate();
+        // Insert resume if not null
+        if (job.getResume() != null) {
+            stmt = conn.prepareStatement(INSERT_RESUME);
+            stmt.setInt(1, job.getId());
+            stmt.setBytes(2, job.getResume().getResume());
+            stmt.setString(3, job.getResume().getExtension());
+            stmt.executeUpdate();
+        }
 
         // Insert cover letter
         stmt = conn.prepareStatement(INSERT_COVER_LETTER);
