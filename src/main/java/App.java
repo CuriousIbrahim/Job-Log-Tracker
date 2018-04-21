@@ -1,6 +1,8 @@
+import controller.AllJobViewerController;
 import controller.StatusController;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import view.AllJobViewer;
 import view.InsertJobWindow;
 import controller.AddJobController;
 
@@ -12,10 +14,9 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage = new InsertJobWindow();
+        primaryStage = new AllJobViewer();
 
-        new AddJobController((InsertJobWindow)primaryStage);
-        new StatusController((InsertJobWindow)primaryStage);
+        new AllJobViewerController((AllJobViewer) primaryStage);
 
         primaryStage.show();
     }
