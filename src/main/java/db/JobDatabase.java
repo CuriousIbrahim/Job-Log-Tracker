@@ -157,12 +157,14 @@ public class JobDatabase extends Database implements JobDAO {
             stmt.executeUpdate();
         }
 
-        // Insert cover letter
-        stmt = conn.prepareStatement(INSERT_COVER_LETTER);
-        stmt.setInt(1, job.getId());
-        stmt.setBytes(2, job.getCoverLetter().getCoverLetter());
-        stmt.setString(3, job.getCoverLetter().getExtension());
-        stmt.executeUpdate();
+        // Insert cover letter if not null
+        if (job.getCoverLetter() != null) {
+            stmt = conn.prepareStatement(INSERT_COVER_LETTER);
+            stmt.setInt(1, job.getId());
+            stmt.setBytes(2, job.getCoverLetter().getCoverLetter());
+            stmt.setString(3, job.getCoverLetter().getExtension());
+            stmt.executeUpdate();
+        }
 
         // Insert job statuses
         for (JobStatus status : job.getJobStatuses()) {
