@@ -21,6 +21,9 @@ public class Card extends GridPane {
 
         setPadding(new Insets(10));
 
+        setMinSize(250, 100);
+        setMaxSize(250, 100);
+
         setBorder(new Border(
                 new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)
         ));
