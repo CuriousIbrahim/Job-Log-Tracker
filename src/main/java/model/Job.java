@@ -152,10 +152,6 @@ public class Job {
 
     public JobStatus getCurrentJobStatus() {
 
-        // Check if jobStatuses is empty
-        if (jobStatuses == null)
-            return null;
-
         JobStatus largest = null;
 
         largest = jobStatuses.get(0);

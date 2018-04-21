@@ -30,7 +30,10 @@ public class AllJobViewerController {
             jobTitle.add(j.getTitle());
             jobType.add(j.getType());
             company.add(j.getCompany());
-            currentStatus.add(j.getCurrentJobStatus().getStatus());
+            if (!j.getJobStatuses().isEmpty())
+                currentStatus.add(j.getCurrentJobStatus().getStatus());
+            else
+                currentStatus.add("N/A");
         }
 
         for (int i = 0; i < jobId.size(); i++) {
