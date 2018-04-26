@@ -37,6 +37,21 @@ public class TextAttribute extends BaseAttribute {
         return ((TextField)value).getText();
     }
 
+    @Override
+    public void setValue(Object o) {
+
+        String temp = null;
+
+        if (o instanceof String)
+            temp = (String) o;
+        else
+            return;
+
+        ((TextField)value).setText(temp);
+
+
+    }
+
     public void setEditable(boolean state) {
         ((TextField)this.value).setEditable(state);
     }
