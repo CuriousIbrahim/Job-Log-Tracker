@@ -54,6 +54,11 @@ public class JobStatusAttribute extends GridPane {
             addOption(option);
     }
 
+    public void setValues(String valueOption, LocalDate valueDate) {
+        this.options.setValue(valueOption);
+        this.datePicker.setValue(valueDate);
+    }
+
     public String getStatus() {
         return options.getValue();
     }
