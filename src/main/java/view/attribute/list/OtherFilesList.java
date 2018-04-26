@@ -31,6 +31,25 @@ public class OtherFilesList extends GridPane {
 
     }
 
+    public void addItem(String name, String filePath) {
+
+        if (otherFileAttributes.size() >= MAX) {
+            return;
+        }
+
+        getChildren().clear();
+
+        OtherFileAttribute temp = new OtherFileAttribute(name, filePath);
+        temp.getXButton().setOnAction(event -> {
+            removeItem(temp.getUniqueId());
+        });
+
+        otherFileAttributes.add(0, temp);
+
+        load();
+
+    }
+
     public void addItem() {
 
         if (otherFileAttributes.size() >= MAX) {
