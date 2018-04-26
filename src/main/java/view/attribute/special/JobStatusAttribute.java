@@ -22,6 +22,15 @@ public class JobStatusAttribute extends GridPane {
         setOptions(options);
     }
 
+    public JobStatusAttribute(List<String> options, String optionValue, LocalDate optionDate) {
+        this(options);
+
+
+        this.options.setValue(optionValue);
+        this.datePicker.setValue(optionDate);
+
+    }
+
     public JobStatusAttribute() {
         id = MAIN_ID++;
         x = new Button("X");
