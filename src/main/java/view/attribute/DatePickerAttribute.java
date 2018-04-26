@@ -22,4 +22,18 @@ public class DatePickerAttribute extends BaseAttribute {
     public LocalDate getValue() {
         return ((DatePicker)value).getValue();
     }
+
+    @Override
+    public void setValue(Object o) {
+
+        LocalDate temp = null;
+
+        if (o instanceof LocalDate)
+            temp = (LocalDate) o;
+        else
+            return;
+
+        ((DatePicker)value).setValue(temp);
+
+    }
 }
