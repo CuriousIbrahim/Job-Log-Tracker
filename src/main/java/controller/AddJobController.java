@@ -2,6 +2,7 @@ package controller;
 
 import db.JobDatabase;
 import db.dao.JobDAO;
+import javafx.event.ActionEvent;
 import model.*;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
@@ -25,7 +26,7 @@ public class AddJobController {
 
         jobDB = new JobDatabase();
 
-        window.getSubmitBtn().setOnAction(event -> {
+        window.getSubmitBtn().addEventHandler(ActionEvent.ACTION, (event) -> {
 
             Job job;
 

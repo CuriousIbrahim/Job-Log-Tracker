@@ -26,17 +26,6 @@ public class AllJobViewerController {
 
             InsertJobWindow insertJobWindow = new InsertJobWindow();
 
-            insertJobWindow.getSubmitBtn().addEventHandler(ActionEvent.ACTION, (e) -> {
-
-                view.clearCards();
-                try {
-                    addJobsToView(view);
-                } catch (SQLException e1) {
-                    e1.printStackTrace(System.out);
-                }
-
-            });
-
             try {
 
                 new AddJobController(insertJobWindow);
@@ -44,6 +33,17 @@ public class AllJobViewerController {
                 new TypeController(insertJobWindow);
 
                 insertJobWindow.show();
+
+                insertJobWindow.getSubmitBtn().addEventHandler(ActionEvent.ACTION, (e) -> {
+
+                    view.clearCards();
+                    try {
+                        addJobsToView(view);
+                    } catch (SQLException e1) {
+                        e1.printStackTrace(System.out);
+                    }
+
+                });
 
 
             } catch (SQLException e) {
