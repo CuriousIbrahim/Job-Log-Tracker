@@ -25,6 +25,8 @@ public abstract class BaseAttribute extends GridPane {
 
     public abstract Object getValue();
 
+    public abstract void setValue(Object o);
+
 
 
 
