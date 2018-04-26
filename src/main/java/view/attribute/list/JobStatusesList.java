@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import view.attribute.special.JobStatusAttribute;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +31,30 @@ public class JobStatusesList extends GridPane {
 
         setHgap(10);
         setVgap(10);
+
+    }
+
+    public void addItem(String status, LocalDate date) {
+
+        if (jobStatusAttributes.size() >= MAX) {
+            return;
+        }
+
+        getChildren().clear();
+
+        JobStatusAttribute temp;
+        if (options != null)
+            temp = new JobStatusAttribute(options, status, date);
+        else
+            temp = new JobStatusAttribute();
+
+        temp.getXButton().setOnAction(event -> {
+            removeItem(temp.getUniqueId());
+        });
+
+        jobStatusAttributes.add(0, temp);
+
+        load();
 
     }
 
