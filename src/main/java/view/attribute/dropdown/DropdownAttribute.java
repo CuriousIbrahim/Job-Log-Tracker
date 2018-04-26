@@ -42,6 +42,20 @@ public class DropdownAttribute extends BaseAttribute {
         return options.getValue();
     }
 
+    @Override
+    public void setValue(Object o) {
+
+        String temp = null;
+
+        if (o instanceof String)
+            temp = (String) o;
+        else
+            return;
+
+        options.setValue(temp);
+
+    }
+
     public void setInteract(boolean value) {
         options.setDisable(value);
     }
