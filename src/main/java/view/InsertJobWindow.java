@@ -157,4 +157,47 @@ public class InsertJobWindow extends Stage {
         this.jobStatuses.setOptions(options);
     }
 
+    public void setJobTitle(String title) {
+        this.title.setValue(title);
+    }
+
+    public void setType(String type) {
+        this.type.setValue(type);
+    }
+
+    public void setLocation(String location) {
+        this.location.setValue(location);
+    }
+
+    public void setCompany(String company) {
+        this.company.setValue(company);
+    }
+
+    public void setDate(LocalDate date) {
+        this.date.setValue(date);
+    }
+
+    public void setResume(String resume) {
+        this.resume.setValue(resume);
+    }
+
+    public void setCoverLetter(String coverLetter) {
+        this.coverLetter.setValue(coverLetter);
+    }
+
+    public void setDescription(String description) {
+        this.description.setText(description);
+    }
+
+    public void setJobStatuses(List<String> statuses, List<LocalDate> dates) {
+        for (int i = 0; i < statuses.size(); i++) {
+            this.jobStatuses.addItem(statuses.get(i), dates.get(i));
+        }
+    }
+
+    public void setOtherFilesList(List<String> names, List<String> filePaths) {
+        for (int i = 0; i < names.size(); i++) {
+            this.otherFilesList.addItem(names.get(i), filePaths.get(i));
+        }
+    }
 }
