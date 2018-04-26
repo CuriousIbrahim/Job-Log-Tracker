@@ -95,5 +95,8 @@ public class AllJobViewer extends Stage {
 
         allCards.getChildren().clear();
 
+        column_count = 0;
+        row_count = 0;
+
     }
 }
