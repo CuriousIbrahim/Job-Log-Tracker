@@ -24,7 +24,7 @@ public class AllJobViewerController {
 
         view.getAddNewJobBtn().setOnAction(event -> {
 
-            JobWindow jobWindow = new JobWindow();
+            JobWindow jobWindow = new JobWindow("Add");
 
             try {
 
