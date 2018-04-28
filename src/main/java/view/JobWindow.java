@@ -41,13 +41,11 @@ public class JobWindow extends Stage {
     private JobStatusesList jobStatuses;
     private OtherFilesList otherFilesList;
 
-    public JobWindow() {
+    private JobWindow() {
 
         // ============================================================
         // Initialize variables
         // ============================================================
-
-        button = new Button("Add");
 
         mainGridPane = new GridPane();
 
@@ -83,14 +81,8 @@ public class JobWindow extends Stage {
         mainGridPane.add(new Label("Description"), 0, 3);
         mainGridPane.add(description, 0, 4, 3, 2);
 
-        // TODO: Display a List of DropDownAttribute and FileAttribute
         mainGridPane.add(otherFilesList, 0, 7, 2, 4);
         mainGridPane.add(jobStatuses, 2, 7, 2, 6);
-
-
-        HBox buttonBox = new HBox(button);
-        buttonBox.setAlignment(Pos.CENTER);
-        mainGridPane.add(buttonBox, 1, 14);
 
         // ============================================================
 
@@ -101,6 +93,17 @@ public class JobWindow extends Stage {
         Scene scene = new Scene(mainGridPane);
         setScene(scene);
 
+
+    }
+
+    public JobWindow(String buttonText) {
+        this();
+
+        button = new Button(buttonText);
+
+        HBox buttonBox = new HBox(button);
+        buttonBox.setAlignment(Pos.CENTER);
+        mainGridPane.add(buttonBox, 1, 14);
 
     }
 
