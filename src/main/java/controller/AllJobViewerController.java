@@ -6,7 +6,7 @@ import db.JobDatabase;
 import javafx.event.ActionEvent;
 import model.Job;
 import view.AllJobViewer;
-import view.InsertJobWindow;
+import view.JobWindow;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -24,17 +24,17 @@ public class AllJobViewerController {
 
         view.getAddNewJobBtn().setOnAction(event -> {
 
-            InsertJobWindow insertJobWindow = new InsertJobWindow();
+            JobWindow jobWindow = new JobWindow();
 
             try {
 
-                new AddJobController(insertJobWindow);
-                new StatusController(insertJobWindow);
-                new TypeController(insertJobWindow);
+                new AddJobController(jobWindow);
+                new StatusController(jobWindow);
+                new TypeController(jobWindow);
 
-                insertJobWindow.show();
+                jobWindow.show();
 
-                insertJobWindow.getSubmitBtn().addEventHandler(ActionEvent.ACTION, (e) -> {
+                jobWindow.getSubmitBtn().addEventHandler(ActionEvent.ACTION, (e) -> {
 
                     view.clearCards();
                     try {

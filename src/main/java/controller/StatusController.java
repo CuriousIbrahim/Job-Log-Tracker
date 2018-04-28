@@ -2,7 +2,7 @@ package controller;
 
 import db.JobStatusDatabase;
 import db.dao.StatusDAO;
-import view.InsertJobWindow;
+import view.JobWindow;
 
 import java.sql.SQLException;
 
@@ -10,7 +10,7 @@ public class StatusController {
 
     StatusDAO statusDB;
 
-    public StatusController(InsertJobWindow window) throws SQLException {
+    public StatusController(JobWindow window) throws SQLException {
 
         statusDB = new JobStatusDatabase();
 

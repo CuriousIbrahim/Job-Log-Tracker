@@ -7,7 +7,7 @@ import model.*;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import util.Time;
-import view.InsertJobWindow;
+import view.JobWindow;
 import view.attribute.special.JobStatusAttribute;
 import view.attribute.special.OtherFileAttribute;
 
@@ -22,7 +22,7 @@ public class AddJobController {
 
     private JobDAO jobDB;
 
-    public AddJobController(InsertJobWindow window) throws SQLException {
+    public AddJobController(JobWindow window) throws SQLException {
 
         jobDB = new JobDatabase();
 

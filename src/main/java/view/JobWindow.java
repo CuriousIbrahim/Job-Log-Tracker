@@ -22,7 +22,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InsertJobWindow extends Stage {
+public class JobWindow extends Stage {
 
     private Button submitBtn;
     private GridPane mainGridPane;
@@ -42,7 +42,7 @@ public class InsertJobWindow extends Stage {
     private JobStatusesList jobStatuses;
     private OtherFilesList otherFilesList;
 
-    public InsertJobWindow() {
+    public JobWindow() {
 
         // ============================================================
         // Initialize variables

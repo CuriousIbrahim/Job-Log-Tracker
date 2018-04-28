@@ -1,10 +1,7 @@
 import controller.AllJobViewerController;
-import controller.StatusController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import view.AllJobViewer;
-import view.InsertJobWindow;
-import controller.AddJobController;
 
 public class App extends Application {
 
