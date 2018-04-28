@@ -19,12 +19,11 @@ import view.attribute.special.OtherFileAttribute;
 import view.attribute.list.OtherFilesList;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class JobWindow extends Stage {
 
-    private Button submitBtn;
+    private Button button;
     private GridPane mainGridPane;
 
     private TextAttribute title;
@@ -48,7 +47,7 @@ public class JobWindow extends Stage {
         // Initialize variables
         // ============================================================
 
-        submitBtn = new Button("Add");
+        button = new Button("Add");
 
         mainGridPane = new GridPane();
 
@@ -89,7 +88,7 @@ public class JobWindow extends Stage {
         mainGridPane.add(jobStatuses, 2, 7, 2, 6);
 
 
-        HBox buttonBox = new HBox(submitBtn);
+        HBox buttonBox = new HBox(button);
         buttonBox.setAlignment(Pos.CENTER);
         mainGridPane.add(buttonBox, 1, 14);
 
@@ -105,8 +104,8 @@ public class JobWindow extends Stage {
 
     }
 
-    public Button getSubmitBtn() {
-        return submitBtn;
+    public Button getButton() {
+        return button;
     }
 
     public String getJobTitle() {

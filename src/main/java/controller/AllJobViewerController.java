@@ -34,7 +34,7 @@ public class AllJobViewerController {
 
                 jobWindow.show();
 
-                jobWindow.getSubmitBtn().addEventHandler(ActionEvent.ACTION, (e) -> {
+                jobWindow.getButton().addEventHandler(ActionEvent.ACTION, (e) -> {
 
                     view.clearCards();
                     try {

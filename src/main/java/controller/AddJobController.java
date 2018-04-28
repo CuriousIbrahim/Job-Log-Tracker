@@ -26,7 +26,7 @@ public class AddJobController {
 
         jobDB = new JobDatabase();
 
-        window.getSubmitBtn().addEventHandler(ActionEvent.ACTION, (event) -> {
+        window.getButton().addEventHandler(ActionEvent.ACTION, (event) -> {
 
             Job job;
 
