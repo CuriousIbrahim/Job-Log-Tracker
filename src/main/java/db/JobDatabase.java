@@ -12,7 +12,7 @@ import java.util.List;
 
 public class JobDatabase extends Database implements JobDAO {
 
-    // Selecting
+    // Selecting and Finding, Everything other than ALL_JOB is also used in find() method
     private static final String ALL_JOB = "SELECT * FROM job";
     private static final String ALL_JOB_STATUS = "SELECT * FROM job_status WHERE job_id=";
     private static final String GET_RESUME = "SELECT * FROM resume WHERE job_id=";
@@ -37,6 +37,10 @@ public class JobDatabase extends Database implements JobDAO {
             "VALUES (?, ?, ?)";
     private static final String INSERT_OTHER_FILE = "INSERT INTO other_file (job_id, name, file, extension) " +
             "VALUES (?, ?, ?, ?)";
+
+    // Find
+    private static final String FIND_JOB = "SELECT * FROM JOB WHERE id=";
+
 
 
 
@@ -184,6 +188,55 @@ public class JobDatabase extends Database implements JobDAO {
             stmt.setString(4, file.getExtension());
             stmt.executeUpdate();
         }
+
+    }
+
+    @Override
+    public Job find(int id) throws SQLException {
+
+        ResultSet rsJob = runQuery(FIND_JOB+id);
+
+        String title = rsJob.getString("title");
+        String type = rsJob.getString("type");
+        String company = rsJob.getString("company");
+        String description = rsJob.getString("description");
+        int timestampApplied = rsJob.getInt("timestamp_applied");
+        String location = rsJob.getString("location");
+
+
+        ResultSet rsJobStatus = runQuery(ALL_JOB_STATUS+id);
+
+        List<JobStatus> jobStatuses = new ArrayList<>();
+        while (rsJobStatus.next())
+            jobStatuses.add(new JobStatus(
+                    id, rsJobStatus.getInt("timestamp"), rsJobStatus.getString("status")
+            ));
+
+
+        ResultSet rsResume = runQuery(GET_RESUME+id);
+
+        Resume resume = new Resume(id, rsResume.getBytes("resume"), rsResume.getString("extension"));
+
+
+        ResultSet rsCoverLetter = runQuery(GET_COVER_LETTER+id);
+
+        CoverLetter coverLetter = new CoverLetter(id, rsCoverLetter.getBytes("cover_letter"), rsCoverLetter.getString("extension"));
+
+
+        ResultSet rsOtherFiles = runQuery(ALL_OTHER_FILES+id);
+
+        List<OtherFile> otherFiles = new ArrayList<>();
+        while (rsOtherFiles.next())
+            otherFiles.add(new OtherFile(
+                    id, rsOtherFiles.getString("name"), rsOtherFiles.getBytes("file"), rsOtherFiles.getString("extension")
+            ));
+
+
+        Job job = new Job(
+                id, title, type, company, description, timestampApplied, location, jobStatuses, resume, coverLetter, otherFiles
+        );
+
+        return job;
 
     }
 
