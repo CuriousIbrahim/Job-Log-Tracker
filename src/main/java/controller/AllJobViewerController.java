@@ -4,6 +4,8 @@ import db.dao.JobDAO;
 import db.JobDatabase;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
 import model.Job;
 import view.AllJobViewer;
 import view.JobWindow;
@@ -73,7 +75,28 @@ public class AllJobViewerController {
         }
 
         for (int i = 0; i < jobId.size(); i++) {
-            view.addJob(jobId.get(i), jobTitle.get(i), jobType.get(i), company.get(i), currentStatus.get(i));
+
+
+            view.addJob(jobId.get(i), jobTitle.get(i), jobType.get(i), company.get(i), currentStatus.get(i),
+                    new EditJobHandler(jobId.get(i)));
+        }
+    }
+
+    class EditJobHandler implements EventHandler<MouseEvent> {
+
+        private int jobId;
+
+        public EditJobHandler(int jobId) {
+            this.jobId = jobId;
+        }
+
+
+        @Override
+        public void handle(MouseEvent event) {
+//            JobWindow window = new JobWindow("Edit");
+
+
+
         }
     }
 }
