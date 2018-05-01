@@ -215,12 +215,16 @@ public class JobDatabase extends Database implements JobDAO {
 
         ResultSet rsResume = runQuery(GET_RESUME+id);
 
-        Resume resume = new Resume(id, rsResume.getBytes("resume"), rsResume.getString("extension"));
+        Resume resume = null;
+        if (rsResume.next())
+            resume = new Resume(id, rsResume.getBytes("resume"), rsResume.getString("extension"));
 
 
         ResultSet rsCoverLetter = runQuery(GET_COVER_LETTER+id);
 
-        CoverLetter coverLetter = new CoverLetter(id, rsCoverLetter.getBytes("cover_letter"), rsCoverLetter.getString("extension"));
+        CoverLetter coverLetter = null;
+        if (rsCoverLetter.next())
+            coverLetter = new CoverLetter(id, rsCoverLetter.getBytes("cover_letter"), rsCoverLetter.getString("extension"));
 
 
         ResultSet rsOtherFiles = runQuery(ALL_OTHER_FILES+id);
