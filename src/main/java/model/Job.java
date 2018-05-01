@@ -1,5 +1,8 @@
 package model;
 
+import util.Time;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -172,5 +175,13 @@ public class Job {
             statuses.add(s.getStatus());
 
         return statuses;
+    }
+
+    public List<LocalDate> getJobStatusDates() {
+        List<LocalDate> dates = new ArrayList<>();
+        for (JobStatus s : jobStatuses)
+            dates.add(Time.unixTimestampToLocalDate(s.getTimestamp()));
+
+        return dates;
     }
 }
