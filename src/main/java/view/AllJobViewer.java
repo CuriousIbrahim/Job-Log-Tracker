@@ -1,9 +1,11 @@
 package view;
 
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -79,10 +81,12 @@ public class AllJobViewer extends Stage {
 
     }
 
-    public void addJob(int jobId, String jobTitle, String jobType, String company, String currentStatus) {
+    public void addJob(int jobId, String jobTitle, String jobType, String company, String currentStatus, EventHandler<MouseEvent> event) {
         Card card = new Card(
                 jobId, jobTitle, jobType, company, currentStatus
         );
+
+        card.setOnMouseClicked(event);
 
         addCard(card);
     }
