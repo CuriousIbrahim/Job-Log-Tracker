@@ -10,5 +10,6 @@ public interface JobDAO {
     List<Job> all() throws SQLException;
     void clear() throws SQLException;
     void insert(Object o) throws SQLException;
+    Job find(int id) throws SQLException
     void delete(Object o) throws SQLException;
 }
