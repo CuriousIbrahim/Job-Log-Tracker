@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import model.Job;
+import util.Time;
 import view.AllJobViewer;
 import view.JobWindow;
 
@@ -93,9 +94,38 @@ public class AllJobViewerController {
 
         @Override
         public void handle(MouseEvent event) {
-//            JobWindow window = new JobWindow("Edit");
+            JobWindow window = new JobWindow("Edit");
+
+            Job job = null;
+
+            try {
+                job = jobDB.find(this.jobId);
+            } catch (SQLException e) {
+                e.printStackTrace(System.out);
+                return;
+            }
 
 
+            try {
+                new AddJobController(window);
+                new StatusController(window);
+                new TypeController(window);
+            } catch (SQLException e) {
+                e.printStackTrace(System.out);
+            }
+
+            window.setJobTitle(job.getTitle());
+            window.setType(job.getType());
+            window.setLocation(job.getLocation());
+            window.setCompany(job.getCompany());
+            window.setDate(Time.unixTimestampToLocalDate(job.getTimestampApplied()));
+            // TODO: Set Resume
+            // TODO: Set Cover Letter
+            window.setDescription(job.getDescription());
+            window.setJobStatuses(job.getJobStatusesString(), job.getJobStatusDates());
+            // TODO: Set Other Files List
+
+            window.show();
 
         }
     }
