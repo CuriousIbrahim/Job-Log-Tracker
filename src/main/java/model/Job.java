@@ -184,4 +184,12 @@ public class Job {
 
         return dates;
     }
+
+    public List<String> getOtherFileNames() {
+        List<String> names = new ArrayList<>();
+        for (OtherFile f : otherFiles)
+            names.add(f.getName());
+
+        return names;
+    }
 }
