@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Job {
@@ -163,5 +164,13 @@ public class Job {
         }
 
         return largest;
+    }
+
+    public List<String> getJobStatusesString() {
+        List<String> statuses = new ArrayList<>();
+        for (JobStatus s : jobStatuses)
+            statuses.add(s.getStatus());
+
+        return statuses;
     }
 }
