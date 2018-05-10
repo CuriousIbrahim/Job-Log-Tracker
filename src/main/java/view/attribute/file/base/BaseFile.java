@@ -29,7 +29,7 @@ public class BaseFile extends GridPane {
         add(selectFileBtn, 1, 0);
         add(openBtn, 2, 0);
 
-        openBtn.setVisible(false);
+        openBtn.setDisable(true);
 
         setHgap(5);
 
@@ -42,7 +42,7 @@ public class BaseFile extends GridPane {
 
             if (file != null) {
                 filePath.setText(file.getAbsolutePath());
-                openBtn.setVisible(true);
+                openBtn.setDisable(false);
             }
 
         });
@@ -64,7 +64,7 @@ public class BaseFile extends GridPane {
 
         filePath.setText(path);
 
-        openBtn.setVisible(true);
+        openBtn.setDisable(false);
     }
 
     public String getFilePath() {
@@ -73,6 +73,7 @@ public class BaseFile extends GridPane {
 
     public void setFilePath(String filePath) {
         this.filePath.setText(filePath);
-        openBtn.setVisible(true);
+
+        openBtn.setDisable(false);
     }
 }
