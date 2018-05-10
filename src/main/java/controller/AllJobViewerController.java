@@ -132,7 +132,7 @@ public class AllJobViewerController {
 
             try {
                 if (job.getCoverLetter() != null)
-                    window.setResume(makeResumeOrCoverLetter(job, 1));
+                    window.setCoverLetter(makeResumeOrCoverLetter(job, 1));
             } catch (IOException e) {
                 e.printStackTrace(System.out);
             }
