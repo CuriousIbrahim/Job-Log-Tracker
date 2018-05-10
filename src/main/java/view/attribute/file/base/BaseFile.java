@@ -10,7 +10,7 @@ import java.io.File;
 
 public class BaseFile extends GridPane {
 
-    private Button button;
+    private Button selectFileBtn;
     private TextField filePath;
 
     private FileChooser fileChooser;
@@ -19,14 +19,14 @@ public class BaseFile extends GridPane {
     public BaseFile() {
 
         filePath = new TextField();
-        button = new Button("Select File");
+        selectFileBtn = new Button("Select File");
 
         add(filePath, 0, 0);
-        add(button, 1, 0);
+        add(selectFileBtn, 1, 0);
 
         setHgap(5);
 
-        button.setOnAction(event -> {
+        selectFileBtn.setOnAction(event -> {
 
             fileChooserStage = new Stage();
             fileChooser = new FileChooser();
