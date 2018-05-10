@@ -7,10 +7,13 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import model.Job;
+import util.FileUtil;
 import util.Time;
 import view.AllJobViewer;
 import view.JobWindow;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -119,14 +122,53 @@ public class AllJobViewerController {
             window.setLocation(job.getLocation());
             window.setCompany(job.getCompany());
             window.setDate(Time.unixTimestampToLocalDate(job.getTimestampApplied()));
-            // TODO: Set Resume
-            // TODO: Set Cover Letter
+
+            try {
+                if (job.getResume() != null)
+                    window.setResume(makeResumeOrCoverLetter(job, 0));
+            } catch (IOException e) {
+                e.printStackTrace(System.out);
+            }
+
+            try {
+                if (job.getCoverLetter() != null)
+                    window.setResume(makeResumeOrCoverLetter(job, 1));
+            } catch (IOException e) {
+                e.printStackTrace(System.out);
+            }
+
             window.setDescription(job.getDescription());
             window.setJobStatuses(job.getJobStatusesString(), job.getJobStatusDates());
             // TODO: Set Other Files List
 
             window.show();
 
+        }
+    }
+
+    /*
+    f:0 is Resume
+    f;1 is Cover Letter
+     */
+    private String makeResumeOrCoverLetter(Job job, int f) throws IOException {
+
+        if (f == 0 || f == 1) {
+            String name = String.format("%s - %s - %s ", job.getTitle(), job.getType(), job.getCompany());
+
+            if (f == 0) {
+                name += "RESUME";
+
+                String temp = FileUtil.addFile(name, job.getResume().getExtension(), job.getResume().getResume());
+
+                return FileUtil.addFile(name, job.getResume().getExtension(), job.getResume().getResume());
+            } else {
+                name += "COVER LETTER";
+
+                return FileUtil.addFile(name, job.getCoverLetter().getExtension(), job.getCoverLetter().getCoverLetter());
+            }
+        } else {
+            System.out.println("yea its null");
+            return null;
         }
     }
 }
