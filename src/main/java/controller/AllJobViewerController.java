@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import model.Job;
+import model.OtherFile;
 import util.FileUtil;
 import util.Time;
 import view.AllJobViewer;
@@ -139,7 +140,18 @@ public class AllJobViewerController {
 
             window.setDescription(job.getDescription());
             window.setJobStatuses(job.getJobStatusesString(), job.getJobStatusDates());
-            // TODO: Set Other Files List
+
+            List<String> otherFileNames = new ArrayList<>();
+            List<String> otherFilePaths = new ArrayList<>();
+            for (OtherFile o : job.getOtherFiles()) {
+                otherFileNames.add(o.getName());
+                try {
+                    otherFilePaths.add(FileUtil.addFile(o.getName(), o.getExtension(), o.getFile()));
+                } catch (IOException e) {
+                    e.printStackTrace(System.out);
+                }
+            }
+            window.setOtherFilesList(otherFileNames, otherFilePaths);
 
             window.show();
 
