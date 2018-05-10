@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class FileUtil {
 
-    private static String TEMP_DIR = "/temp";
+    private static String TEMP_DIR = "temp";
 
     private static void makeTempDir() {
         new File(TEMP_DIR).mkdir();
