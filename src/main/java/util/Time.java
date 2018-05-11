@@ -12,7 +12,7 @@ public class Time {
 
     // Answer from Holger on https://stackoverflow.com/questions/35183146/how-can-i-create-a-java-8-localdate-from-a-long-epoch-time-in-milliseconds
     public static LocalDate unixTimestampToLocalDate(int timestamp){
-        return Instant.ofEpochMilli((long) timestamp).atZone(ZoneId.systemDefault()).toLocalDate();
+        return Instant.ofEpochMilli((long) timestamp * 1000).atZone(ZoneId.systemDefault()).toLocalDate();
     }
 
 }
