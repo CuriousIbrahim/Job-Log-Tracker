@@ -22,9 +22,11 @@ import java.util.List;
 public class AllJobViewerController {
 
     private JobDAO jobDB;
+    private AllJobViewer view;
 
     public AllJobViewerController(AllJobViewer view) throws SQLException {
 
+        this.view = view;
         jobDB = new JobDatabase();
 
         addJobsToView(view);
@@ -42,14 +44,7 @@ public class AllJobViewerController {
                 jobWindow.show();
 
                 jobWindow.getButton().addEventHandler(ActionEvent.ACTION, (e) -> {
-
-                    view.clearCards();
-                    try {
-                        addJobsToView(view);
-                    } catch (SQLException e1) {
-                        e1.printStackTrace(System.out);
-                    }
-
+                    updateView();
                 });
 
 
@@ -59,6 +54,15 @@ public class AllJobViewerController {
 
         });
 
+    }
+
+    protected void updateView() {
+        view.clearCards();
+        try {
+            addJobsToView(view);
+        } catch (SQLException e1) {
+            e1.printStackTrace(System.out);
+        }
     }
 
     private void addJobsToView(AllJobViewer view) throws SQLException{
@@ -91,6 +95,7 @@ public class AllJobViewerController {
 
         private int jobId;
 
+
         public EditJobHandler(int jobId) {
             this.jobId = jobId;
         }
@@ -111,13 +116,20 @@ public class AllJobViewerController {
 
 
             try {
-                new AddJobController(window);
                 new StatusController(window);
                 new TypeController(window);
+                new EditJobController(window, job);
             } catch (SQLException e) {
                 e.printStackTrace(System.out);
             }
 
+            window.getButton().addEventHandler(ActionEvent.ACTION, (e) -> {
+
+                updateView();
+
+            });
+
+            window.setJobTitle(job.getTitle());
             window.setJobTitle(job.getTitle());
             window.setType(job.getType());
             window.setLocation(job.getLocation());
