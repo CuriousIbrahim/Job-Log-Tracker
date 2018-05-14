@@ -40,4 +40,39 @@ public class CoverLetter {
     public void setExtension(String extension) {
         this.extension = extension;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        CoverLetter coverLetter = null;
+
+        if (obj instanceof CoverLetter)
+            coverLetter = (CoverLetter) obj;
+        else
+            return false;
+
+        if (this.jobId != coverLetter.jobId || !this.extension.equals(coverLetter.extension))
+            return false;
+
+        boolean areBytesSame;
+
+        // Check if they are the same lengths first
+        if (this.coverLetter.length == coverLetter.coverLetter.length) {
+
+            // Iterate each byte in each array and check if they are not similar
+            // Average & Worst = O(n)
+            for (int i = 0; i < this.coverLetter.length; i++) {
+
+                if (this.coverLetter[i] != coverLetter.coverLetter[i])
+                    return false;
+
+            }
+
+            areBytesSame = true;
+
+        } else
+            return false;
+
+        return ((this.jobId == coverLetter.jobId) && (areBytesSame) && (this.extension.equals(coverLetter.extension)));
+
+    }
 }
