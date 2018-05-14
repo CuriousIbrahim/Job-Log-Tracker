@@ -1,5 +1,7 @@
 package model;
 
+import static util.ByteUtil.compareByteArrays;
+
 public class CoverLetter {
 
     private int jobId;
@@ -53,24 +55,7 @@ public class CoverLetter {
         if (this.jobId != coverLetter.jobId || !this.extension.equals(coverLetter.extension))
             return false;
 
-        boolean areBytesSame;
-
-        // Check if they are the same lengths first
-        if (this.coverLetter.length == coverLetter.coverLetter.length) {
-
-            // Iterate each byte in each array and check if they are not similar
-            // Average & Worst = O(n)
-            for (int i = 0; i < this.coverLetter.length; i++) {
-
-                if (this.coverLetter[i] != coverLetter.coverLetter[i])
-                    return false;
-
-            }
-
-            areBytesSame = true;
-
-        } else
-            return false;
+        boolean areBytesSame = compareByteArrays(this.coverLetter, coverLetter.coverLetter);
 
         return ((this.jobId == coverLetter.jobId) && (areBytesSame) && (this.extension.equals(coverLetter.extension)));
 
