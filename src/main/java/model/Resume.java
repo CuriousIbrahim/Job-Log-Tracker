@@ -1,5 +1,7 @@
 package model;
 
+import static util.ByteUtil.compareByteArrays;
+
 public class Resume {
 
     private int jobId;
@@ -53,24 +55,7 @@ public class Resume {
         if (this.jobId != resume.jobId || !this.extension.equals(resume.extension))
             return false;
 
-        boolean areBytesSame;
-
-        // Check if they are the same lengths first
-        if (this.resume.length == resume.resume.length) {
-
-            // Iterate each byte in each array and check if they are not similar
-            // Average & Worst = O(n)
-            for (int i = 0; i < this.resume.length; i++) {
-
-                if (this.resume[i] != resume.resume[i])
-                    return false;
-
-            }
-
-            areBytesSame = true;
-
-        } else
-            return false;
+        boolean areBytesSame = compareByteArrays(this.resume, resume.resume);
 
         return ((this.jobId == resume.jobId) && (areBytesSame) && (this.extension.equals(resume.extension)));
 
