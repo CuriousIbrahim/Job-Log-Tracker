@@ -41,6 +41,15 @@ public class JobDatabase extends Database implements JobDAO {
     // Find
     private static final String FIND_JOB = "SELECT * FROM JOB WHERE id=";
 
+    // Delete
+    private static final String DELETE_STATUS = "DELETE FROM job_status WHERE job_id = ?";
+    private static final String DELETE_OTHER_FILE = "DELETE FROM other_file WHERE job_id = ?";
+
+    // Update
+    private static final String UPDATE_JOB = "UPDATE job SET title = ?, type = ?, company = ?, description = ?, " +
+            "timestamp_applied = ?, location = ? WHERE id = ?";
+    private static final String UPDATE_RESUME = "UPDATE resume SET  cover_letter = ?, extension = ? WHERE job_id = ?";
+    private static final String UPDATE_COVER_LETTER = "UPDATE cover_letter SET cover_letter = ?, extension = ? WHERE job_id = ?";
 
 
 
@@ -246,6 +255,64 @@ public class JobDatabase extends Database implements JobDAO {
 
     @Override
     public void delete(Object o) throws SQLException {
+
+    }
+
+    @Override
+    public void update(int id, Job updatedJob) throws SQLException {
+
+        // job table
+        PreparedStatement stmt = conn.prepareStatement(UPDATE_JOB);
+        stmt.setString(1, updatedJob.getTitle());
+        stmt.setString(2, updatedJob.getType());
+        stmt.setString(3, updatedJob.getCompany());
+        stmt.setString(4, updatedJob.getDescription());
+        stmt.setInt(5, updatedJob.getTimestampApplied());
+        stmt.setString(6, updatedJob.getLocation());
+        stmt.setInt(7, id);
+        stmt.executeUpdate();
+
+        // resume table
+        stmt = conn.prepareStatement(UPDATE_RESUME);
+        stmt.setBytes(1, updatedJob.getResume().getResume());
+        stmt.setString(2, updatedJob.getResume().getExtension());
+        stmt.setInt(3, id);
+        stmt.executeUpdate();
+
+        // cover_letter table
+        stmt = conn.prepareStatement(UPDATE_COVER_LETTER);
+        stmt.setBytes(1, updatedJob.getCoverLetter().getCoverLetter());
+        stmt.setString(2, updatedJob.getCoverLetter().getExtension());
+        stmt.setInt(3, id);
+        stmt.executeUpdate();
+
+        // job_status table
+        stmt = conn.prepareStatement(DELETE_STATUS);
+        stmt.setInt(1, id);
+        stmt.executeUpdate();
+
+        for (JobStatus s : updatedJob.getJobStatuses()) {
+            stmt = conn.prepareStatement(INSERT_STATUS);
+            stmt.setInt(1, id);
+            stmt.setInt(2, s.getTimestamp());
+            stmt.setString(3, s.getStatus());
+            stmt.executeUpdate();
+        }
+
+        // other_file table
+        stmt = conn.prepareStatement(DELETE_OTHER_FILE);
+        stmt.setInt(1, id);
+        stmt.executeUpdate();
+
+        for (OtherFile f : updatedJob.getOtherFiles()) {
+            stmt = conn.prepareStatement(INSERT_OTHER_FILE);
+            stmt.setInt(1, id);
+            stmt.setString(2, f.getName());
+            stmt.setBytes(3, f.getFile());
+            stmt.setString(4, f.getExtension());
+            stmt.executeUpdate();
+        }
+
 
     }
 }
