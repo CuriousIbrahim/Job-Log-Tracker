@@ -179,7 +179,6 @@ public class AllJobViewerController {
                 return FileUtil.addFile(name, job.getCoverLetter().getExtension(), job.getCoverLetter().getCoverLetter());
             }
         } else {
-            System.out.println("yea its null");
             return null;
         }
     }

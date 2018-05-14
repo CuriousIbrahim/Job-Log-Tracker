@@ -41,9 +41,6 @@ public class AllJobViewer extends Stage {
 
         allCards.setPadding(new Insets(10));
 
-        System.out.println(allCards.getPadding());
-
-
         allCards.setBorder(new Border(
                 new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)
         ));
@@ -74,8 +71,6 @@ public class AllJobViewer extends Stage {
         }
 
         this.allJobs.add(card);
-
-        System.out.println("column:" + column_count + " row:" + row_count);
 
         allCards.add(card, column_count++, row_count);
 
