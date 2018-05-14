@@ -28,73 +28,9 @@ public class AddJobController {
 
         window.getButton().addEventHandler(ActionEvent.ACTION, (event) -> {
 
-            Job job;
-
-            String title = window.getJobTitle();
-            String type = window.getType();
-            String company = window.getCompany();
-            String description = window.getDescription();
-            int timestampApplied = (int) Time.localDateToUnixTimestamp(window.getDate());
-            String location = window.getLocation();
-
-            Resume resume = null;
-            if (window.getResume() != null && !window.getResume().equals("")) {
-                try {
-                    resume = new Resume(
-                            IOUtils.toByteArray(new FileInputStream(window.getResume())),
-                            FilenameUtils.getExtension(window.getResume())
-                    );
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace(System.out);
-                } catch (IOException e) {
-                    e.printStackTrace(System.out);
-                }
-            }
-
-            CoverLetter coverLetter = null;
-            if (window.getCoverLetter() != null && !window.getCoverLetter().equals("")) {
-                try {
-                    coverLetter = new CoverLetter(
-                            IOUtils.toByteArray(new FileInputStream(window.getCoverLetter())),
-                            FilenameUtils.getExtension(window.getCoverLetter())
-                    );
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace(System.out);
-                } catch (IOException e) {
-                    e.printStackTrace(System.out);
-                }
-            }
-
-            List<JobStatus> jobStatuses = new ArrayList<>();
-            for (JobStatusAttribute s : window.getJobStatuses()) {
-                jobStatuses.add(
-                        new JobStatus(
-                                (int) Time.localDateToUnixTimestamp(s.getDate()),
-                                s.getStatus()
-                        )
-                );
-            }
-
-            List<OtherFile> otherFiles = new ArrayList<>();
-            for (OtherFileAttribute o : window.getOtherFilesList()) {
-                try {
-                    otherFiles.add(new OtherFile(
-                            o.getName(),
-                            IOUtils.toByteArray(new FileInputStream(o.getFile())),
-                            FilenameUtils.getExtension(o.getFile())
-                    ));
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace(System.out);
-                } catch (IOException e) {
-                    e.printStackTrace(System.out);
-                }
-            }
-
-            job = new Job(title, type, company, description, timestampApplied, location, jobStatuses, resume,
-                    coverLetter, otherFiles);
 
             try {
-                jobDB.insert(job);
+                jobDB.insert(getJobFromView(window));
             } catch (SQLException e) {
                 e.printStackTrace(System.out);
             }
@@ -104,6 +40,72 @@ public class AddJobController {
 
         });
 
+    }
+
+    public static Job getJobFromView(JobWindow window) {
+
+        String title = window.getJobTitle();
+        String type = window.getType();
+        String company = window.getCompany();
+        String description = window.getDescription();
+        int timestampApplied = (int) Time.localDateToUnixTimestamp(window.getDate());
+        String location = window.getLocation();
+
+        Resume resume = null;
+        if (window.getResume() != null && !window.getResume().equals("")) {
+            try {
+                resume = new Resume(
+                        IOUtils.toByteArray(new FileInputStream(window.getResume())),
+                        FilenameUtils.getExtension(window.getResume())
+                );
+            } catch (FileNotFoundException e) {
+                e.printStackTrace(System.out);
+            } catch (IOException e) {
+                e.printStackTrace(System.out);
+            }
+        }
+
+        CoverLetter coverLetter = null;
+        if (window.getCoverLetter() != null && !window.getCoverLetter().equals("")) {
+            try {
+                coverLetter = new CoverLetter(
+                        IOUtils.toByteArray(new FileInputStream(window.getCoverLetter())),
+                        FilenameUtils.getExtension(window.getCoverLetter())
+                );
+            } catch (FileNotFoundException e) {
+                e.printStackTrace(System.out);
+            } catch (IOException e) {
+                e.printStackTrace(System.out);
+            }
+        }
+
+        List<JobStatus> jobStatuses = new ArrayList<>();
+        for (JobStatusAttribute s : window.getJobStatuses()) {
+            jobStatuses.add(
+                    new JobStatus(
+                            (int) Time.localDateToUnixTimestamp(s.getDate()),
+                            s.getStatus()
+                    )
+            );
+        }
+
+        List<OtherFile> otherFiles = new ArrayList<>();
+        for (OtherFileAttribute o : window.getOtherFilesList()) {
+            try {
+                otherFiles.add(new OtherFile(
+                        o.getName(),
+                        IOUtils.toByteArray(new FileInputStream(o.getFile())),
+                        FilenameUtils.getExtension(o.getFile())
+                ));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace(System.out);
+            } catch (IOException e) {
+                e.printStackTrace(System.out);
+            }
+        }
+
+        return new Job(title, type, company, description, timestampApplied, location, jobStatuses, resume,
+                coverLetter, otherFiles);
     }
 
 }
