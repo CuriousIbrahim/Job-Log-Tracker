@@ -30,16 +30,10 @@ public class EditJobController {
 
             if (!before.equals(after)) {
 
-                int count = 0;
-
-                while (count > 3) {
-                    try {
-                        jobDB.update(before.getId(), after);
-                        break;
-                    } catch (SQLException ex) {
-                        ex.printStackTrace(System.out);
-                        count++;
-                    }
+                try {
+                    jobDB.update(before.getId(), after);
+                } catch (SQLException ex) {
+                    ex.printStackTrace(System.out);
                 }
 
                 window.close();
