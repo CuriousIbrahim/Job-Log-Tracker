@@ -1,5 +1,7 @@
 package model;
 
+import static util.ByteUtil.compareByteArrays;
+
 public class OtherFile {
 
     private int jobId;
@@ -50,5 +52,23 @@ public class OtherFile {
 
     public void setExtension(String extension) {
         this.extension = extension;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        OtherFile otherFile = null;
+
+        if (obj instanceof OtherFile)
+            otherFile = (OtherFile) obj;
+        else
+            return false;
+
+        if (this.jobId != otherFile.jobId || !this.name.equals(otherFile.name) || !this.extension.equals(otherFile.extension))
+            return false;
+
+        boolean areBytesSame = compareByteArrays(this.file, otherFile.file);
+
+        return (this.jobId == otherFile.jobId && this.name.equals(otherFile.name) && areBytesSame
+                && this.extension.equals(otherFile.extension));
     }
 }
