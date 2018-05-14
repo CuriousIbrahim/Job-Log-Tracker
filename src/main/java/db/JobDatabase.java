@@ -48,7 +48,7 @@ public class JobDatabase extends Database implements JobDAO {
     // Update
     private static final String UPDATE_JOB = "UPDATE job SET title = ?, type = ?, company = ?, description = ?, " +
             "timestamp_applied = ?, location = ? WHERE id = ?";
-    private static final String UPDATE_RESUME = "UPDATE resume SET  cover_letter = ?, extension = ? WHERE job_id = ?";
+    private static final String UPDATE_RESUME = "UPDATE resume SET resume = ?, extension = ? WHERE job_id = ?";
     private static final String UPDATE_COVER_LETTER = "UPDATE cover_letter SET cover_letter = ?, extension = ? WHERE job_id = ?";
 
 
@@ -273,18 +273,22 @@ public class JobDatabase extends Database implements JobDAO {
         stmt.executeUpdate();
 
         // resume table
-        stmt = conn.prepareStatement(UPDATE_RESUME);
-        stmt.setBytes(1, updatedJob.getResume().getResume());
-        stmt.setString(2, updatedJob.getResume().getExtension());
-        stmt.setInt(3, id);
-        stmt.executeUpdate();
+        if (updatedJob.getResume() != null) {
+            stmt = conn.prepareStatement(UPDATE_RESUME);
+            stmt.setBytes(1, updatedJob.getResume().getResume());
+            stmt.setString(2, updatedJob.getResume().getExtension());
+            stmt.setInt(3, id);
+            stmt.executeUpdate();
+        }
 
         // cover_letter table
-        stmt = conn.prepareStatement(UPDATE_COVER_LETTER);
-        stmt.setBytes(1, updatedJob.getCoverLetter().getCoverLetter());
-        stmt.setString(2, updatedJob.getCoverLetter().getExtension());
-        stmt.setInt(3, id);
-        stmt.executeUpdate();
+        if (updatedJob.getCoverLetter() != null) {
+            stmt = conn.prepareStatement(UPDATE_COVER_LETTER);
+            stmt.setBytes(1, updatedJob.getCoverLetter().getCoverLetter());
+            stmt.setString(2, updatedJob.getCoverLetter().getExtension());
+            stmt.setInt(3, id);
+            stmt.executeUpdate();
+        }
 
         // job_status table
         stmt = conn.prepareStatement(DELETE_STATUS);
