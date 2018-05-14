@@ -28,9 +28,11 @@ public class EditJobController {
 
             Job after = getJobFromView(window);
 
+
             if (!before.equals(after)) {
 
                 try {
+                    // FIXME: Update functionality rarely works, says the database file is locked
                     jobDB.update(before.getId(), after);
                 } catch (SQLException ex) {
                     ex.printStackTrace(System.out);
