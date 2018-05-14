@@ -192,4 +192,45 @@ public class Job {
 
         return names;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        Job job = null;
+
+        if (obj instanceof Job)
+            job = (Job) obj;
+        else
+            return false;
+
+        if (this.id != job.id)
+            return false;
+
+        boolean jobStatusesSame;
+        // Compare Job Statuses
+        if (this.jobStatuses.size() == job.jobStatuses.size()) {
+            for (int i = 0; i < this.jobStatuses.size(); i++) {
+                if (!this.jobStatuses.get(i).equals(job.jobStatuses.get(i)))
+                    return false;
+            }
+            jobStatusesSame = true;
+        } else
+            return false;
+
+        boolean otherFilesSame;
+        // Compare Other Files
+        if (this.otherFiles.size() == job.otherFiles.size()) {
+            for (int i = 0; i < this.otherFiles.size(); i++) {
+                if (!this.otherFiles.get(i).equals(job.otherFiles.get(i)))
+                    return false;
+            }
+            otherFilesSame = true;
+        } else
+            return false;
+
+        return (this.id == job.id && this.title.equals(job.title) && this.type.equals(job.type)
+                && this.company.equals(job.company) && this.description.equals(job.description)
+                && this.timestampApplied == job.timestampApplied && this.location.equals(job.location)
+                && jobStatusesSame && this.resume.equals(job.resume) && this.coverLetter.equals(job.coverLetter)
+                && otherFilesSame);
+    }
 }
