@@ -40,4 +40,16 @@ public class JobStatus {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        JobStatus jobStatus = null;
+        if (obj instanceof JobStatus)
+            jobStatus = (JobStatus) obj;
+        else
+            return false;
+
+        return ((this.jobId == jobStatus.jobId) && (this.timestamp == jobStatus.timestamp)
+                && (this.status.equals(jobStatus.status)));
+    }
 }
