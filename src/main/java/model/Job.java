@@ -1,5 +1,6 @@
 package model;
 
+import util.ListUtil;
 import util.Time;
 
 import java.time.LocalDate;
@@ -232,5 +233,32 @@ public class Job {
                 && this.timestampApplied == job.timestampApplied && this.location.equals(job.location)
                 && jobStatusesSame && this.resume.equals(job.resume) && this.coverLetter.equals(job.coverLetter)
                 && otherFilesSame);
+    }
+
+    @Override
+    public String toString() {
+
+        List<String> jobStatusStrings = new ArrayList<>();
+        List<String> otherFileStrings = new ArrayList<>();
+
+        for (JobStatus jobStatus : jobStatuses)
+            jobStatusStrings.add(jobStatus.toString());
+
+        for (OtherFile otherFile : otherFiles)
+            otherFileStrings.add(otherFile.toString());
+
+        return "Job{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", type='" + type + '\'' +
+                ", company='" + company + '\'' +
+                ", description='" + description + '\'' +
+                ", timestampApplied=" + timestampApplied +
+                ", location='" + location + '\'' +
+                ", jobStatuses=" + ListUtil.listOfStringsToString(getJobStatusesString()) +
+                ", resume=" + resume.toString() +
+                ", coverLetter=" + coverLetter.toString() +
+                ", otherFiles=" + ListUtil.listOfStringsToString(otherFileStrings) +
+                '}';
     }
 }
