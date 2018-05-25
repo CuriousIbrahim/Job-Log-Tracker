@@ -19,24 +19,36 @@ public class CoreDatabase {
 
     public ResultSet runQuery(String sql){
 
+        Statement stmt = null;
+
         try {
 
-            Statement stmt = conn.createStatement();
+            stmt = conn.createStatement();
 
             return stmt.executeQuery(sql);
 
         } catch (SQLException e) {
             e.printStackTrace(System.out);
             return null;
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace(System.out);
+                }
+            }
         }
 
     }
 
     public boolean runSql(String sql) {
 
+        Statement stmt = null;
+
         try {
 
-            Statement stmt = conn.createStatement();
+            stmt = conn.createStatement();
             stmt.execute(sql);
 
             return true;
@@ -44,6 +56,14 @@ public class CoreDatabase {
         } catch (SQLException e) {
             e.printStackTrace(System.out);
             return false;
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace(System.out);
+                }
+            }
         }
     }
 
