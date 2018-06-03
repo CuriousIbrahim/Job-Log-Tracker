@@ -2,6 +2,11 @@ package db.core;
 
 import java.sql.SQLException;
 
+/**
+ * Is the Database that every other Database class (other than CoreDatabase) will inherit from. Constructs every
+ * table that is used through out the entire application.
+ */
+
 public class Database extends CoreDatabase {
 
     private static final String DB_NAME = "jobs_database";
@@ -21,6 +26,11 @@ public class Database extends CoreDatabase {
             "CREATE TABLE IF NOT EXISTS other_file (id INTEGER PRIMARY KEY, job_id INTEGER, name TEXT, file BLOB, extension TEXT, " +
                     "FOREIGN KEY (job_id) REFERENCES job(id));"
     };
+
+    /**
+     * Creates every table that is needed in the application
+     * @throws SQLException
+     */
 
 
     public Database() throws SQLException {
