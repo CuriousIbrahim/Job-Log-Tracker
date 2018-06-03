@@ -10,6 +10,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * JobDatabase is the class that has allows communication with the 'job' table. Implements all methods from JobDAO
+ */
+
 public class JobDatabase extends Database implements JobDAO {
 
     // Selecting and Finding, Everything other than ALL_JOB is also used in find() method
@@ -51,9 +55,18 @@ public class JobDatabase extends Database implements JobDAO {
     private static final String UPDATE_RESUME = "UPDATE resume SET resume = ?, extension = ? WHERE job_id = ?";
     private static final String UPDATE_COVER_LETTER = "UPDATE cover_letter SET cover_letter = ?, extension = ? WHERE job_id = ?";
 
-
+    /**
+     * Default constructor
+     * @throws SQLException
+     */
 
     public JobDatabase () throws SQLException {}
+
+    /**
+     * Returns every entry from the 'job' table
+     * @return An List of Job objects
+     * @throws SQLException
+     */
 
     @Override
     public List<Job> all() throws SQLException {
@@ -123,6 +136,11 @@ public class JobDatabase extends Database implements JobDAO {
 
     }
 
+    /**
+     * Deletes every entry in the 'job' table
+     * @throws SQLException
+     */
+
     @Override
     public void clear() throws SQLException {
 
@@ -130,6 +148,12 @@ public class JobDatabase extends Database implements JobDAO {
             runSql(sql);
 
     }
+
+    /**
+     * Inserts into the 'job' table
+     * @param o A Job object. If object is not an instanceof Job, then insert will fail
+     * @throws SQLException
+     */
 
     @Override
     public void insert(Object o) throws SQLException {
@@ -200,6 +224,13 @@ public class JobDatabase extends Database implements JobDAO {
 
     }
 
+    /**
+     * Find and return job data based on id
+     * @param id Id of job to find
+     * @return Job object containing found job from table
+     * @throws SQLException
+     */
+
     @Override
     public Job find(int id) throws SQLException {
 
@@ -253,10 +284,24 @@ public class JobDatabase extends Database implements JobDAO {
 
     }
 
+
+    /**
+     * Deletes a job based on id
+     * @param id Id of job to delete
+     * @throws SQLException
+     */
+
     @Override
-    public void delete(Object o) throws SQLException {
+    public void delete(int id) throws SQLException {
 
     }
+
+    /**
+     * Updates the information of a job
+     * @param id Id of job to update
+     * @param updatedJob The Updated information
+     * @throws SQLException
+     */
 
     @Override
     public void update(int id, Job updatedJob) throws SQLException {
