@@ -9,6 +9,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * JobTypeDatabase is the class that allows communication with the 'type' table. Implements all methods from TypeDAO
+ */
+
 public class JobTypeDatabase extends Database implements TypeDAO {
 
     private static final String[] DEFAULT_VALUES = {
@@ -28,6 +32,12 @@ public class JobTypeDatabase extends Database implements TypeDAO {
 
     }
 
+    /**
+     * Returns every entry from 'type' table
+     * @return A list of String objects representing every job type
+     * @throws SQLException
+     */
+
     @Override
     public List<String> all() throws SQLException {
         List<String> jobTypes = new ArrayList<>();
@@ -39,6 +49,11 @@ public class JobTypeDatabase extends Database implements TypeDAO {
 
         return jobTypes;
     }
+
+    /**
+     * Deletes every value in 'type' table and fills it with DEFAULT_VALUES
+     * @throws SQLException
+     */
 
     @Override
     public void clear() throws SQLException {
@@ -52,6 +67,12 @@ public class JobTypeDatabase extends Database implements TypeDAO {
             insert(d);
 
     }
+
+    /**
+     * Inserts a job type to 'type' table
+     * @param o String object representing job type
+     * @throws SQLException
+     */
 
     @Override
     public void insert(Object o) throws SQLException {
@@ -71,6 +92,12 @@ public class JobTypeDatabase extends Database implements TypeDAO {
 
 
     }
+
+    /**
+     * Deletes a job type from 'type' table
+     * @param o String object representing the job type to delete
+     * @throws SQLException
+     */
 
     @Override
     public void delete(Object o) throws SQLException {
