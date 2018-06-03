@@ -5,6 +5,10 @@ import model.Job;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * A Job Data Access Object, specially for the 'job' table
+ */
+
 public interface JobDAO {
 
     List<Job> all() throws SQLException;
