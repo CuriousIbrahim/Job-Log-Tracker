@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * JobDatabase is the class that has allows communication with the 'job' table. Implements all methods from JobDAO
+ * JobDatabase is the class that allows communication with the 'job' table. Implements all methods from JobDAO
  */
 
 public class JobDatabase extends Database implements JobDAO {
@@ -64,7 +64,7 @@ public class JobDatabase extends Database implements JobDAO {
 
     /**
      * Returns every entry from the 'job' table
-     * @return An List of Job objects
+     * @return A List of Job objects
      * @throws SQLException
      */
 

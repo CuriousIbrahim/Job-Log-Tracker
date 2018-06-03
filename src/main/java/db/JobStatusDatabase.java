@@ -9,6 +9,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * JobStatusDatabase is the class that allows communication with the 'status' table. Implements all methods from StatusDAO
+ */
+
 public class JobStatusDatabase extends Database implements StatusDAO {
 
     private static final String[] DEFAULT_VALUES = {
@@ -26,6 +30,12 @@ public class JobStatusDatabase extends Database implements StatusDAO {
 
     public JobStatusDatabase() throws SQLException { }
 
+    /**
+     * Returns every entry from 'status' table
+     * @return A list of String objects representing every status
+     * @throws SQLException
+     */
+
     @Override
     public List<String> all() throws SQLException {
         ResultSet rs = runQuery(ALL);
@@ -40,6 +50,11 @@ public class JobStatusDatabase extends Database implements StatusDAO {
 
     }
 
+    /**
+     * Deletes every value in 'status' table and fills it with DEFAULT_VALUES
+     * @throws SQLException
+     */
+
     @Override
     public void clear() throws SQLException {
 
@@ -52,6 +67,12 @@ public class JobStatusDatabase extends Database implements StatusDAO {
         }
 
     }
+
+    /**
+     * Inserts a status to 'status' table
+     * @param o String object representing status
+     * @throws SQLException
+     */
 
     @Override
     public void insert(Object o) throws SQLException {
@@ -71,6 +92,12 @@ public class JobStatusDatabase extends Database implements StatusDAO {
         statement.executeUpdate();
 
     }
+
+    /**
+     * Deletes a status from 'status' table
+     * @param o String object representing the status to delete
+     * @throws SQLException
+     */
 
     @Override
     public void delete(Object o) throws SQLException {
