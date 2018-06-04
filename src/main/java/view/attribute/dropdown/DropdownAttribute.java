@@ -7,9 +7,18 @@ import view.attribute.base.BaseAttribute;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents a dropdown attribute, inherits from baseAttribute. Allows value selection via ComboBox, thus a dropdown
+ */
+
 public class DropdownAttribute extends BaseAttribute {
 
     private ComboBox<String> options;
+
+    /**
+     * Constructs a DropDownAttribute with the labelName as the label of the attribute
+     * @param labelName Label for attribute
+     */
 
     public DropdownAttribute (String labelName) {
         super(labelName);
@@ -25,9 +34,19 @@ public class DropdownAttribute extends BaseAttribute {
         add(value, 1, 0);
     }
 
+    /**
+     * Add option to ComboBox/Dropdown
+     * @param option Option to add
+     */
+
     protected void addOption(String option) {
         this.options.getItems().add(option);
     }
+
+    /**
+     * Sets all options for ComboBox/Dropdown
+     * @param options Options for ComboBox/Dropdown
+     */
 
     public void setOptions(List<String> options) {
         this.options.getItems().clear();
@@ -37,10 +56,20 @@ public class DropdownAttribute extends BaseAttribute {
         }
     }
 
+    /**
+     * Returns value of attribute
+     * @return Value of attribute
+     */
+
     @Override
     public String getValue() {
         return options.getValue();
     }
+
+    /**
+     * Sets the value
+     * @param o Value to place in view
+     */
 
     @Override
     public void setValue(Object o) {
@@ -56,7 +85,12 @@ public class DropdownAttribute extends BaseAttribute {
 
     }
 
+    /**
+     * Disables/enables ComboBox based on given parameter
+     * @param value If true, enable ComboBox, if false, disable ComboBox
+     */
+
     public void setInteract(boolean value) {
-        options.setDisable(value);
+        options.setDisable(!value);
     }
 }
