@@ -10,6 +10,10 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Contains the basics to browse computer, select a folder, and stores path in a TextField
+ */
+
 public class BaseFile extends GridPane {
 
     private Button selectFileBtn;
@@ -18,6 +22,10 @@ public class BaseFile extends GridPane {
 
     private FileChooser fileChooser;
     private Stage fileChooserStage;
+
+    /**
+     * Constructs a BaseFile object, and takes care of GridPane spacing and location of each Node
+     */
 
     public BaseFile() {
 
@@ -59,6 +67,11 @@ public class BaseFile extends GridPane {
 
     }
 
+    /**
+     * Constructs a BaseFile object, calls default constructor and sets file path in TextField
+     * @param path Valid file path
+     */
+
     public BaseFile(String path) {
         this();
 
@@ -67,9 +80,19 @@ public class BaseFile extends GridPane {
         openBtn.setDisable(false);
     }
 
+    /**
+     * Returns file path
+     * @return File path
+     */
+
     public String getFilePath() {
         return filePath.getText();
     }
+
+    /**
+     * Sets file path in view
+     * @param filePath File path
+     */
 
     public void setFilePath(String filePath) {
         this.filePath.setText(filePath);
