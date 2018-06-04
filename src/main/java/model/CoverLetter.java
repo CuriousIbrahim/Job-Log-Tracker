@@ -3,7 +3,7 @@ package model;
 import static util.ByteUtil.compareByteArrays;
 
 /**
- * A CoverLetter class
+ * A CoverLetter class, represents the 'cover_letter' table
  */
 
 public class CoverLetter {
