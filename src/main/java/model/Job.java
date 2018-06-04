@@ -352,8 +352,8 @@ public class Job {
     /**
      * Checks if this and obj are exactly the same object. This includes comparing the resume, cover letter, every status,
      * and every other file. Resource intensive depending on how many files the job has (ex. resume, cover letter & other files)
-     * @param obj
-     * @return
+     * @param obj Another Job object to compare to this
+     * @return If obj is not a Job or is not exactly the same to this, return false, otherwise, return true
      */
 
     @Override
