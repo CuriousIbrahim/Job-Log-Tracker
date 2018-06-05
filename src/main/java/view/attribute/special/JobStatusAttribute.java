@@ -117,8 +117,8 @@ public class JobStatusAttribute extends GridPane {
     }
 
     /**
-     * Returns job id associated with the job status
-     * @return Returns job id associated with the job status
+     * Returns id of this JobStatusAttribute
+     * @return Id of this JobStatusAttribute
      */
 
     public int getUniqueId() {

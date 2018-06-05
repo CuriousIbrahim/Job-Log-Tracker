@@ -80,8 +80,8 @@ public class OtherFileAttribute extends GridPane {
     }
 
     /**
-     * Returns job id
-     * @return Job id
+     * Returns id of this OtherFileAttribute
+     * @return Id of this OtherFileAttribute
      */
 
     public int getUniqueId() {

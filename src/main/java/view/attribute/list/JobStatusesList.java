@@ -9,6 +9,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Visual list (using GridPane) of JobStatusAttribute objects, allows the addition of new JobStatusAttributes (max of 5)
+ * and removal of JobStatusAttributes
+ */
+
 public class JobStatusesList extends GridPane {
 
     private List<JobStatusAttribute> jobStatusAttributes;
@@ -17,6 +22,10 @@ public class JobStatusesList extends GridPane {
     private List<String> options;
 
     private final int MAX = 5;
+
+    /**
+     * Constructs a JobStatusList object, takes care of the placement of each visual object as well as its spacing
+     */
 
     public JobStatusesList () {
         jobStatusAttributes = new ArrayList<>();
@@ -33,6 +42,12 @@ public class JobStatusesList extends GridPane {
         setVgap(10);
 
     }
+
+    /**
+     * Add a new job status to the list with the given parameters filled in to its fields
+     * @param status Job status
+     * @param date Job status' date
+     */
 
     public void addItem(String status, LocalDate date) {
 
@@ -58,6 +73,10 @@ public class JobStatusesList extends GridPane {
 
     }
 
+    /**
+     * Add new JobStatusAttribute to list with empty fields
+     */
+
     public void addItem() {
 
         if (jobStatusAttributes.size() >= MAX) {
@@ -82,6 +101,11 @@ public class JobStatusesList extends GridPane {
 
     }
 
+    /**
+     * Remove JobStatusAttribute from the List based on id
+     * @param id Id of JobStatusAttribute to remove
+     */
+
     private void removeItem(int id) {
         for (int i = 0; i < jobStatusAttributes.size(); i++) {
             if (id == jobStatusAttributes.get(i).getUniqueId())
@@ -92,6 +116,10 @@ public class JobStatusesList extends GridPane {
 
         load();
     }
+
+    /**
+     * Load/Reload view
+     */
 
     private void load() {
         // Static
@@ -104,12 +132,23 @@ public class JobStatusesList extends GridPane {
 
     }
 
+    /**
+     * Set the options for the JobStatusAttributes, when adding a new JobStatusAttribute, these are the options that will
+     * be avaiable for the status
+     * @param options Options to set for the JobStatusAttributes
+     */
+
     public void setOptions(List<String> options) {
         this.options = options;
 
         for (JobStatusAttribute a : jobStatusAttributes)
             a.setOptions(options);
     }
+
+    /**
+     * Return all the JobStatusAttributes in a List
+     * @return All the JobStatusAttributes in a List
+     */
 
     public List<JobStatusAttribute> getJobStatusAttributes() {
         return jobStatusAttributes;
