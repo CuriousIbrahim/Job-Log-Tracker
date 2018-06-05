@@ -44,7 +44,7 @@ public class JobStatusesList extends GridPane {
     }
 
     /**
-     * Add a new job status to the list with the given parameters filled in to its fields
+     * Add a new JobStatusAttribute to the list with the given parameters filled in to its fields
      * @param status Job status
      * @param date Job status' date
      */
