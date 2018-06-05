@@ -126,7 +126,7 @@ public class JobStatusAttribute extends GridPane {
     }
 
     /**
-     * Returns the X button, the X button is in charge of removing a job status
+     * Returns the X button, the X button is in charge of removing a job status input attribute
      * @return X Button
      */
 
